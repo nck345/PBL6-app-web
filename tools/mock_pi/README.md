@@ -31,8 +31,13 @@ Các thư viện chính:
 ## 2. Hướng dẫn khởi chạy
 
 ### Chạy ở chế độ mặc định (tự động nhận diện webcam)
+Mã nguồn tự động dò tìm camera USB qua chuẩn V4L2 (ưu tiên index 1 `/dev/video1`, index 0 `/dev/video0`) với định dạng MJPG 640x480 và bộ đệm 1 khung hình. Chỉ khi không tìm thấy camera vật lý mới tự động chuyển sang radar HUD giả lập.
 ```powershell
 python tools/mock_pi/mock_pi_server.py
+```
+Hoặc trên Raspberry Pi dùng `uv`:
+```bash
+uv run mock_pi_server.py
 ```
 
 ### Chạy chế độ radar HUD giả lập (không dùng webcam)

@@ -24,7 +24,15 @@ class WebrtcDatasource {
 		await _videoRenderer.initialize();
 	}
 	Future<void> connect(String deviceId) async {
-		if (!mqttDatasource.isConnected) throw StateError('MQTT datasource is not connected');
+		if (!mqttDatasource.isConnected) {
+			try {
+				await mqttDatasource.connectionStatusStream
+					.firstWhere((s) => s.toLowerCase() == 'connected')
+					.timeout(const Duration(seconds: 5));
+			} catch (_) {
+				throw StateError('MQTT datasource is not connected');
+			}
+		}
 		await disconnect();
 		_connectionStateController.add(RTCPeerConnectionState.RTCPeerConnectionStateConnecting);
 		mqttDatasource.subscribeWebRtc(deviceId);

@@ -71,12 +71,30 @@ class PiVidTrk(VideoStreamTrack):
 		self.syn_mod=syn_mod
 		self._cam=None
 		if not syn_mod:
-			try:
-				self._cam=cv2.VideoCapture(cam_idx)
-				if not self._cam.isOpened():
-					self._cam=None
-			except Exception:
-				self._cam=None
+			cand_lst=[cam_idx]+[i for i in (1,0,2) if i!=cam_idx]
+			for cur_idx in cand_lst:
+				try:
+					cap_obj=cv2.VideoCapture(cur_idx,cv2.CAP_V4L2) if hasattr(cv2,"CAP_V4L2") else cv2.VideoCapture(cur_idx)
+					if cap_obj.isOpened():
+						try:
+							cap_obj.set(cv2.CAP_PROP_BUFFERSIZE,1)
+							cap_obj.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc(*"MJPG"))
+							cap_obj.set(cv2.CAP_PROP_FRAME_WIDTH,640)
+							cap_obj.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
+							cap_obj.set(cv2.CAP_PROP_FPS,30)
+						except Exception:
+							pass
+						ret_val,tst_frm=cap_obj.read()
+						if ret_val and tst_frm is not None:
+							self._cam=cap_obj
+							self.cam_idx=cur_idx
+							log_inf(f"Successfully opened hardware camera on index {cur_idx}")
+							break
+						cap_obj.release()
+				except Exception:
+					pass
+			if self._cam is None:
+				log_wrn("Could not open physical webcam, falling back to synthetic radar feed.")
 	async def recv(self):
 		pts_val,tb_val=await self.next_timestamp()
 		frm_img=None
