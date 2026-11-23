@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../domain/entities/alert_entity.dart';
@@ -13,6 +14,7 @@ class NotificationService {
       : _notifications = plugin ?? FlutterLocalNotificationsPlugin();
 
   Future<void> initialize({DidReceiveNotificationResponseCallback? onDidReceive}) async {
+    if (kIsWeb) return;
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
     const initSettings = InitializationSettings(android: androidSettings);
     await _notifications.initialize(
@@ -35,11 +37,13 @@ class NotificationService {
   }
 
   Future<bool> requestPermissions() async {
+    if (kIsWeb) return true;
     final status = await Permission.notification.request();
     return status.isGranted;
   }
 
   Future<void> showAlertNotification(AlertEntity alert) async {
+    if (kIsWeb) return;
     final androidDetails = AndroidNotificationDetails(
       channelId,
       channelName,

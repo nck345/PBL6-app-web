@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -35,16 +36,18 @@ class _PttMicButtonState extends State<PttMicButton> with SingleTickerProviderSt
 
 	Future<void> _handlePressDown() async {
 		_isPointerDown = true;
-		final status = await Permission.microphone.status;
-		if (!status.isGranted) {
-			final req = await Permission.microphone.request();
-			if (!req.isGranted) {
-				if (mounted) {
-					ScaffoldMessenger.of(context).showSnackBar(
-						const SnackBar(content: Text('Vui lòng cấp quyền Microphone để đàm thoại')),
-					);
+		if (!kIsWeb) {
+			final status = await Permission.microphone.status;
+			if (!status.isGranted) {
+				final req = await Permission.microphone.request();
+				if (!req.isGranted) {
+					if (mounted) {
+						ScaffoldMessenger.of(context).showSnackBar(
+							const SnackBar(content: Text('Vui lòng cấp quyền Microphone để đàm thoại')),
+						);
+					}
+					return;
 				}
-				return;
 			}
 		}
 		if (!_isPointerDown || !mounted) return;

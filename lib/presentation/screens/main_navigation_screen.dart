@@ -25,37 +25,93 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 			const SettingsScreen(),
 		];
 
-		return Scaffold(
-			body: IndexedStack(
-				index: _selectedIndex,
-				children: screens,
-			),
-			bottomNavigationBar: NavigationBar(
-				selectedIndex: _selectedIndex,
-				onDestinationSelected: (idx) => setState(() => _selectedIndex = idx),
-				destinations: const [
-					NavigationDestination(
-						icon: Icon(Icons.dashboard_outlined),
-						selectedIcon: Icon(Icons.dashboard),
-						label: 'Tổng quan',
+		return LayoutBuilder(
+			builder: (context, constraints) {
+				final isWide = constraints.maxWidth >= 900;
+				if (isWide) {
+					return Scaffold(
+						body: Row(
+							children: [
+								NavigationRail(
+									selectedIndex: _selectedIndex,
+									onDestinationSelected: (idx) => setState(() => _selectedIndex = idx),
+									labelType: NavigationRailLabelType.all,
+									leading: Padding(
+										padding: const EdgeInsets.symmetric(vertical: 16),
+										child: Icon(
+											Icons.remove_red_eye_rounded,
+											color: Theme.of(context).colorScheme.primary,
+											size: 32,
+										),
+									),
+									destinations: const [
+										NavigationRailDestination(
+											icon: Icon(Icons.dashboard_outlined),
+											selectedIcon: Icon(Icons.dashboard),
+											label: Text('Tổng quan'),
+										),
+										NavigationRailDestination(
+											icon: Icon(Icons.videocam_outlined),
+											selectedIcon: Icon(Icons.videocam),
+											label: Text('Camera POV'),
+										),
+										NavigationRailDestination(
+											icon: Icon(Icons.notifications_outlined),
+											selectedIcon: Icon(Icons.notifications),
+											label: Text('Cảnh báo'),
+										),
+										NavigationRailDestination(
+											icon: Icon(Icons.settings_outlined),
+											selectedIcon: Icon(Icons.settings),
+											label: Text('Cài đặt'),
+										),
+									],
+								),
+								const VerticalDivider(thickness: 1, width: 1),
+								Expanded(
+									child: IndexedStack(
+										index: _selectedIndex,
+										children: screens,
+									),
+								),
+							],
+						),
+					);
+				}
+
+				return Scaffold(
+					body: IndexedStack(
+						index: _selectedIndex,
+						children: screens,
 					),
-					NavigationDestination(
-						icon: Icon(Icons.videocam_outlined),
-						selectedIcon: Icon(Icons.videocam),
-						label: 'Camera POV',
+					bottomNavigationBar: NavigationBar(
+						selectedIndex: _selectedIndex,
+						onDestinationSelected: (idx) => setState(() => _selectedIndex = idx),
+						destinations: const [
+							NavigationDestination(
+								icon: Icon(Icons.dashboard_outlined),
+								selectedIcon: Icon(Icons.dashboard),
+								label: 'Tổng quan',
+							),
+							NavigationDestination(
+								icon: Icon(Icons.videocam_outlined),
+								selectedIcon: Icon(Icons.videocam),
+								label: 'Camera POV',
+							),
+							NavigationDestination(
+								icon: Icon(Icons.notifications_outlined),
+								selectedIcon: Icon(Icons.notifications),
+								label: 'Cảnh báo',
+							),
+							NavigationDestination(
+								icon: Icon(Icons.settings_outlined),
+								selectedIcon: Icon(Icons.settings),
+								label: 'Cài đặt',
+							),
+						],
 					),
-					NavigationDestination(
-						icon: Icon(Icons.notifications_outlined),
-						selectedIcon: Icon(Icons.notifications),
-						label: 'Cảnh báo',
-					),
-					NavigationDestination(
-						icon: Icon(Icons.settings_outlined),
-						selectedIcon: Icon(Icons.settings),
-						label: 'Cài đặt',
-					),
-				],
-			),
+				);
+			},
 		);
 	}
 }

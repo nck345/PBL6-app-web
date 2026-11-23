@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:uuid/uuid.dart';
 import '../../core/constants/app_constants.dart';
+import 'mqtt_client_factory.dart';
 
 class MqttDatasource {
-  MqttServerClient? _client;
+  MqttClient? _client;
   String? _currentDeviceId;
 
   final StreamController<String> _statusController =
@@ -50,8 +51,10 @@ class MqttDatasource {
     final clientId = clientIdentifier ?? 'pbl6_app_${const Uuid().v4().substring(0, 8)}';
     _statusController.add('connecting');
 
-    final client = MqttServerClient(broker, clientId);
-    client.port = port;
+    final effectivePort = (port == AppConstants.defaultMqttPort && kIsWeb)
+        ? AppConstants.defaultMqttWebsocketPort
+        : port;
+    final client = createMqttClient(broker, clientId, effectivePort);
     client.keepAlivePeriod = 30;
     client.autoReconnect = true;
     client.resubscribeOnAutoReconnect = true;

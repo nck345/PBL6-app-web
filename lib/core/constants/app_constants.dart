@@ -2,6 +2,7 @@ class AppConstants {
   static const String appTitle = 'PBL6 Assistive Monitor';
   static const String defaultMqttBroker = 'broker.hivemq.com';
   static const int defaultMqttPort = 1883;
+  static const int defaultMqttWebsocketPort = 8000;
   static const String defaultDeviceId = 'pi4_01';
   static const String defaultStunServer = 'stun:stun.l.google.com:19302';
 

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../core/constants/app_constants.dart';
@@ -42,8 +43,8 @@ class WebrtcDatasource {
 		_peerConnection = await createPeerConnection(config, constraints);
 		_pendingIceCandidates.clear();
 		try {
-			final micPermission = await Permission.microphone.request();
-			if (micPermission.isGranted) {
+			final micGranted = kIsWeb || (await Permission.microphone.request()).isGranted;
+			if (micGranted) {
 				_localStream = await navigator.mediaDevices.getUserMedia({
 					'audio': true,
 					'video': false,

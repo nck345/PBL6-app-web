@@ -440,3 +440,31 @@ sequenceDiagram
    - Trước khi kích hoạt chức năng Push-To-Talk, ứng dụng kiểm tra quyền động qua `permission_handler`. Nếu người dùng từ chối cấp quyền micro, ứng dụng hiển thị thông báo hướng dẫn thay vì gây crash luồng WebRTC.
 4. **Chống bão tin nhắn cảnh báo (Alert Flooding Protection)**:
    - Trên thiết bị Raspberry Pi, thuật toán phát hiện vật cản được áp dụng cửa sổ làm tươi (`alert_frequency_ms = 500ms`). Trong khoảng thời gian này, các cảnh báo cùng loại sẽ bị chặn gửi liên tục để tránh làm nghẽn broker và không làm treo giao diện thông báo của điện thoại.
+
+---
+
+## 6. Kiến trúc Hỗ trợ Đa Nền tảng (Mobile & Web App Cross-Platform)
+
+Hệ thống hỗ trợ biên dịch và vận hành song song trên cả hai môi trường **Mobile (Android/iOS)** và **Web App (Trình duyệt Chrome/Edge/Safari)** từ cùng một cơ sở mã nguồn duy nhất:
+
+### 6.1. Tầng kết nối MQTT thích ứng (Conditional Import Factory)
+- **Trên Native (Android/iOS/Desktop)**: Sử dụng `MqttServerClient` kết nối qua raw TCP socket trên cổng tiêu chuẩn `1883`.
+- **Trên Web Browser**: Do trình duyệt chặn raw socket, cơ chế Conditional Import tự động kích hoạt `MqttBrowserClient` kết nối qua giao thức WebSocket trên cổng `8000` (`ws://broker.hivemq.com:8000/mqtt`) với các sub-protocols `['mqtt', 'mqttv3.1', 'mqttv3.1.1']`.
+
+### 6.2. Cơ chế cấp quyền và thu âm WebRTC
+- **Trên Android**: Kiểm tra quyền hệ thống `Permission.microphone` qua `permission_handler`.
+- **Trên Web Browser**: Bỏ qua `permission_handler`, gọi trực tiếp `navigator.mediaDevices.getUserMedia()` để trình duyệt hiển thị hộp thoại cấp quyền tiêu chuẩn W3C.
+
+### 6.3. Giao diện người dùng đáp ứng (Adaptive Layout)
+- **Màn hình hẹp (< 900px - Mobile)**: Sử dụng `NavigationBar` ở đáy màn hình, lưới chỉ số 2 cột.
+- **Màn hình rộng (>= 900px - Web/Tablet/Desktop)**: Tự động chuyển đổi sang `NavigationRail` cố định ở cạnh trái, lưới chỉ số cảm biến 4 cột dàn ngang giúp tận dụng tối đa không gian hiển thị của màn hình máy tính.
+
+### 6.4. Lệnh chạy và biên dịch
+- **Chạy trực tiếp trên Web**:
+  ```powershell
+  flutter run -d chrome
+  ```
+- **Biên dịch bản phát hành Web tĩnh**:
+  ```powershell
+  flutter build web --release
+  ```

@@ -153,45 +153,50 @@ class HomeDashboardScreen extends StatelessWidget {
 												if (state is DashboardLoaded) {
 													final t = state.telemetry;
 													final isDistDanger = t.ultrasonicDistanceCm < 60;
-													return GridView.count(
-														crossAxisCount: 2,
-														crossAxisSpacing: 10,
-														mainAxisSpacing: 10,
-														shrinkWrap: true,
-														physics: const NeverScrollableScrollPhysics(),
-														childAspectRatio: 1.15,
-														children: [
-															MetricTile(
-																title: 'Vật cản gần nhất',
-																value: t.ultrasonicDistanceCm.toStringAsFixed(1),
-																unit: 'cm',
-																icon: Icons.radar,
-																color: isDistDanger ? Colors.red : Colors.blue,
-																subtitle: isDistDanger ? 'CẢNH BÁO QUÁ GẦN' : 'Khoảng cách an toàn',
-															),
-															MetricTile(
-																title: 'Nhiệt độ CPU',
-																value: t.temperatureCelsius.toStringAsFixed(1),
-																unit: '°C',
-																icon: Icons.thermostat,
-																color: t.temperatureCelsius > 70 ? Colors.orange : Colors.teal,
-																subtitle: t.temperatureCelsius > 70 ? 'Nhiệt độ cao' : 'Ổn định',
-															),
-															MetricTile(
-																title: 'Tải CPU',
-																value: t.cpuUsage.toStringAsFixed(0),
-																unit: '%',
-																icon: Icons.memory,
-																color: Colors.indigo,
-															),
-															MetricTile(
-																title: 'Âm lượng loa',
-																value: '${t.speakerVolume}',
-																unit: '%',
-																icon: Icons.volume_up,
-																color: Colors.deepPurple,
-															),
-														],
+													return LayoutBuilder(
+														builder: (context, constraints) {
+															final isWide = constraints.maxWidth >= 600;
+															return GridView.count(
+																crossAxisCount: isWide ? 4 : 2,
+																crossAxisSpacing: 10,
+																mainAxisSpacing: 10,
+																shrinkWrap: true,
+																physics: const NeverScrollableScrollPhysics(),
+																childAspectRatio: isWide ? 1.4 : 1.15,
+																children: [
+																	MetricTile(
+																		title: 'Vật cản gần nhất',
+																		value: t.ultrasonicDistanceCm.toStringAsFixed(1),
+																		unit: 'cm',
+																		icon: Icons.radar,
+																		color: isDistDanger ? Colors.red : Colors.blue,
+																		subtitle: isDistDanger ? 'CẢNH BÁO QUÁ GẦN' : 'Khoảng cách an toàn',
+																	),
+																	MetricTile(
+																		title: 'Nhiệt độ CPU',
+																		value: t.temperatureCelsius.toStringAsFixed(1),
+																		unit: '°C',
+																		icon: Icons.thermostat,
+																		color: t.temperatureCelsius > 70 ? Colors.orange : Colors.teal,
+																		subtitle: t.temperatureCelsius > 70 ? 'Nhiệt độ cao' : 'Ổn định',
+																	),
+																	MetricTile(
+																		title: 'Tải CPU',
+																		value: t.cpuUsage.toStringAsFixed(0),
+																		unit: '%',
+																		icon: Icons.memory,
+																		color: Colors.indigo,
+																	),
+																	MetricTile(
+																		title: 'Âm lượng loa',
+																		value: '${t.speakerVolume}',
+																		unit: '%',
+																		icon: Icons.volume_up,
+																		color: Colors.deepPurple,
+																	),
+																],
+															);
+														},
 													);
 												}
 												if (state is DashboardLoading) {

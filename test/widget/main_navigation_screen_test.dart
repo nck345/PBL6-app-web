@@ -127,5 +127,20 @@ void main() {
 			final stack = tester.widget<IndexedStack>(find.byType(IndexedStack));
 			expect(stack.index, equals(1));
 		});
+
+		testWidgets('W-NAV-05: Wide screen (>= 900px) displays NavigationRail', (tester) async {
+			tester.view.physicalSize = const Size(1200, 800);
+			tester.view.devicePixelRatio = 1.0;
+			addTearDown(() {
+				tester.view.resetPhysicalSize();
+				tester.view.resetDevicePixelRatio();
+			});
+
+			await tester.pumpWidget(createScreen());
+			await tester.pump();
+
+			expect(find.byType(NavigationRail), findsOneWidget);
+			expect(find.byType(NavigationBar), findsNothing);
+		});
 	});
 }
