@@ -169,15 +169,21 @@ class _LiveMonitorScreenState extends State<LiveMonitorScreen> {
 						child: Column(
 							mainAxisSize: MainAxisSize.min,
 							children: [
-								Container(
-									padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-									decoration: BoxDecoration(
-										color: Colors.black45,
-										borderRadius: BorderRadius.circular(16),
-									),
-									child: const Text(
-										'Nhấn giữ nút mic để nói qua loa Raspberry Pi',
-										style: TextStyle(color: Colors.white70, fontSize: 12),
+								Padding(
+									padding: const EdgeInsets.symmetric(horizontal: 24),
+									child: Container(
+										padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+										decoration: BoxDecoration(
+											color: Colors.black45,
+											borderRadius: BorderRadius.circular(16),
+										),
+										child: const Text(
+											'Nhấn giữ nút mic để nói qua loa Raspberry Pi',
+											textAlign: TextAlign.center,
+											maxLines: 2,
+											overflow: TextOverflow.ellipsis,
+											style: TextStyle(color: Colors.white70, fontSize: 12),
+										),
 									),
 								),
 								const SizedBox(height: 12),

@@ -41,9 +41,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 					}
 					if (state is ConfigLoaded) {
 						setState(() {
-							_distanceThreshold = state.config.distanceThresholdCm.toDouble();
-							_speakerVolume = state.config.speakerVolume.toDouble();
-							_alertFrequency = state.config.alertFrequencyMs.toDouble();
+							_distanceThreshold = state.config.distanceThresholdCm.clamp(20, 250).toDouble();
+							_speakerVolume = state.config.speakerVolume.clamp(0, 100).toDouble();
+							_alertFrequency = state.config.alertFrequencyMs.clamp(200, 2000).toDouble();
 						});
 					}
 				},

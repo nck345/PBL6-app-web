@@ -25,7 +25,7 @@ class MetricTile extends StatelessWidget {
 			elevation: 1,
 			shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
 			child: Padding(
-				padding: const EdgeInsets.all(12),
+				padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.start,
 					mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,30 +46,34 @@ class MetricTile extends StatelessWidget {
 								Icon(icon, color: effectiveColor, size: 20),
 							],
 						),
-						const SizedBox(height: 8),
-						Row(
-							crossAxisAlignment: CrossAxisAlignment.baseline,
-							textBaseline: TextBaseline.alphabetic,
-							children: [
-								Text(
-									value,
-									style: TextStyle(
-										fontSize: 22,
-										fontWeight: FontWeight.bold,
-										color: effectiveColor,
-									),
-								),
-								if (unit != null) ...[
-									const SizedBox(width: 4),
+						const SizedBox(height: 6),
+						FittedBox(
+							fit: BoxFit.scaleDown,
+							alignment: Alignment.centerLeft,
+							child: Row(
+								crossAxisAlignment: CrossAxisAlignment.baseline,
+								textBaseline: TextBaseline.alphabetic,
+								children: [
 									Text(
-										unit!,
+										value,
 										style: TextStyle(
-											fontSize: 13,
-											color: Colors.grey[600],
+											fontSize: 22,
+											fontWeight: FontWeight.bold,
+											color: effectiveColor,
 										),
 									),
+									if (unit != null) ...[
+										const SizedBox(width: 4),
+										Text(
+											unit!,
+											style: TextStyle(
+												fontSize: 13,
+												color: Colors.grey[600],
+											),
+										),
+									],
 								],
-							],
+							),
 						),
 						if (subtitle != null) ...[
 							const SizedBox(height: 4),

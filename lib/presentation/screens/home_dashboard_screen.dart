@@ -117,16 +117,23 @@ class HomeDashboardScreen extends StatelessWidget {
 										Row(
 											mainAxisAlignment: MainAxisAlignment.spaceBetween,
 											children: [
-												Row(
-													children: [
-														Icon(Icons.devices, color: Theme.of(context).colorScheme.primary),
-														const SizedBox(width: 8),
-														const Text(
-															'Thiết bị Pi 4',
-															style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-														),
-													],
+												Expanded(
+													child: Row(
+														children: [
+															Icon(Icons.devices, color: Theme.of(context).colorScheme.primary),
+															const SizedBox(width: 8),
+															const Expanded(
+																child: Text(
+																	'Thiết bị Pi 4',
+																	style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+																	maxLines: 1,
+																	overflow: TextOverflow.ellipsis,
+																),
+															),
+														],
+													),
 												),
+												const SizedBox(width: 8),
 												BlocBuilder<DashboardBloc, DashboardState>(
 													builder: (context, state) {
 														if (state is DashboardLoaded) {
@@ -152,7 +159,7 @@ class HomeDashboardScreen extends StatelessWidget {
 														mainAxisSpacing: 10,
 														shrinkWrap: true,
 														physics: const NeverScrollableScrollPhysics(),
-														childAspectRatio: 1.35,
+														childAspectRatio: 1.15,
 														children: [
 															MetricTile(
 																title: 'Vật cản gần nhất',

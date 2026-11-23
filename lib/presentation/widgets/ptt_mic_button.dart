@@ -14,6 +14,7 @@ class PttMicButton extends StatefulWidget {
 class _PttMicButtonState extends State<PttMicButton> with SingleTickerProviderStateMixin {
 	late AnimationController _animCtrl;
 	bool _isPressed = false;
+	bool _isPointerDown = false;
 
 	@override
 	void initState() {
@@ -33,6 +34,7 @@ class _PttMicButtonState extends State<PttMicButton> with SingleTickerProviderSt
 	}
 
 	Future<void> _handlePressDown() async {
+		_isPointerDown = true;
 		final status = await Permission.microphone.status;
 		if (!status.isGranted) {
 			final req = await Permission.microphone.request();
@@ -45,21 +47,23 @@ class _PttMicButtonState extends State<PttMicButton> with SingleTickerProviderSt
 				return;
 			}
 		}
+		if (!_isPointerDown || !mounted) return;
 		setState(() => _isPressed = true);
 		_animCtrl.repeat(reverse: true);
-		if (mounted) {
+		try {
 			context.read<WebRtcBloc>().add(const TogglePushToTalkEvent(isTalking: true));
-		}
+		} catch (_) {}
 	}
 
 	void _handlePressUp() {
-		if (!_isPressed) return;
+		_isPointerDown = false;
+		if (!_isPressed || !mounted) return;
 		setState(() => _isPressed = false);
 		_animCtrl.stop();
 		_animCtrl.animateTo(1.0);
-		if (mounted) {
+		try {
 			context.read<WebRtcBloc>().add(const TogglePushToTalkEvent(isTalking: false));
-		}
+		} catch (_) {}
 	}
 
 	@override
