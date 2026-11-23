@@ -34,7 +34,7 @@
       "test_id": "T1.1.1",
       "name": "Telemetry publication interval verification",
       "status": "PASSED",
-      "duration_ms": 10.25,
+      "duration_ms": 10.2,
       "error_message": null,
       "details": {}
     },
@@ -74,7 +74,7 @@
       "test_id": "T1.1.5",
       "name": "Sequence monotonic timestamps",
       "status": "PASSED",
-      "duration_ms": 5.38,
+      "duration_ms": 5.29,
       "error_message": null,
       "details": {}
     },
@@ -84,7 +84,7 @@
       "test_id": "T1.2.1",
       "name": "Ingestion of standard telemetry packet",
       "status": "PASSED",
-      "duration_ms": 0.04,
+      "duration_ms": 0.05,
       "error_message": null,
       "details": {}
     },
@@ -154,7 +154,7 @@
       "test_id": "T1.3.3",
       "name": "Critical alert level header payload validation",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -204,7 +204,7 @@
       "test_id": "T1.4.3",
       "name": "Sound and vibration flag activation on critical alert",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -344,7 +344,7 @@
       "test_id": "T1.7.2",
       "name": "Online status publication on connect",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -354,7 +354,7 @@
       "test_id": "T1.7.3",
       "name": "Offline status LWT publication on ungraceful disconnect",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -404,7 +404,7 @@
       "test_id": "T1.8.3",
       "name": "Publish SDP Offer to MQTT topic",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -534,7 +534,7 @@
       "test_id": "T1.11.1",
       "name": "Mock Pi initiates video track with FPS 15-30",
       "status": "PASSED",
-      "duration_ms": 92.26,
+      "duration_ms": 1678.05,
       "error_message": null,
       "details": {}
     },
@@ -544,7 +544,7 @@
       "test_id": "T1.11.2",
       "name": "Video stream RTP packet flow establishment",
       "status": "PASSED",
-      "duration_ms": 0.43,
+      "duration_ms": 0.77,
       "error_message": null,
       "details": {}
     },
@@ -554,7 +554,7 @@
       "test_id": "T1.11.3",
       "name": "Frame dimension verification 640x480",
       "status": "PASSED",
-      "duration_ms": 0.45,
+      "duration_ms": 0.74,
       "error_message": null,
       "details": {}
     },
@@ -564,7 +564,7 @@
       "test_id": "T1.11.4",
       "name": "Latency measurement under 300ms ceiling",
       "status": "PASSED",
-      "duration_ms": 0.56,
+      "duration_ms": 0.66,
       "error_message": null,
       "details": {}
     },
@@ -574,7 +574,7 @@
       "test_id": "T1.11.5",
       "name": "Frame decoding without rendering crash",
       "status": "PASSED",
-      "duration_ms": 0.51,
+      "duration_ms": 0.6,
       "error_message": null,
       "details": {}
     },
@@ -614,7 +614,7 @@
       "test_id": "T1.12.4",
       "name": "Visual UI indicator during active recording",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.0,
       "error_message": null,
       "details": {}
     },
@@ -674,7 +674,7 @@
       "test_id": "T1.13.5",
       "name": "Plausible sensor noise injection without illegal values",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -684,7 +684,7 @@
       "test_id": "T1.14.1",
       "name": "Hotkey listener registration in Mock Pi",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -694,7 +694,7 @@
       "test_id": "T1.14.2",
       "name": "Pressing hotkey triggers immediate hazard alert",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -724,7 +724,7 @@
       "test_id": "T1.14.5",
       "name": "Debounce / rate limit check on rapid hotkey presses",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -734,7 +734,7 @@
       "test_id": "T1.15.1",
       "name": "Synthetic radar HUD generator initialization",
       "status": "PASSED",
-      "duration_ms": 0.5,
+      "duration_ms": 0.6,
       "error_message": null,
       "details": {}
     },
@@ -744,7 +744,7 @@
       "test_id": "T1.15.2",
       "name": "Radar sweep line animation progression per frame",
       "status": "PASSED",
-      "duration_ms": 0.51,
+      "duration_ms": 0.58,
       "error_message": null,
       "details": {}
     },
@@ -764,7 +764,7 @@
       "test_id": "T1.15.4",
       "name": "Fallback from physical camera to synthetic feeder",
       "status": "PASSED",
-      "duration_ms": 0.51,
+      "duration_ms": 0.52,
       "error_message": null,
       "details": {}
     },
@@ -774,7 +774,7 @@
       "test_id": "T1.15.5",
       "name": "Timestamp watermarking in synthetic frames",
       "status": "PASSED",
-      "duration_ms": 0.11,
+      "duration_ms": 0.14,
       "error_message": null,
       "details": {}
     },
@@ -824,7 +824,7 @@
       "test_id": "T1.16.5",
       "name": "Speaker volume parameter application to gain",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.0,
       "error_message": null,
       "details": {}
     },
@@ -834,7 +834,7 @@
       "test_id": "T1.17.1",
       "name": "Verification of lib/core/ directory structure",
       "status": "PASSED",
-      "duration_ms": 1.47,
+      "duration_ms": 1.38,
       "error_message": null,
       "details": {}
     },
@@ -844,7 +844,7 @@
       "test_id": "T1.17.2",
       "name": "Verification of lib/data/ directory structure",
       "status": "PASSED",
-      "duration_ms": 0.82,
+      "duration_ms": 2.21,
       "error_message": null,
       "details": {}
     },
@@ -854,7 +854,7 @@
       "test_id": "T1.17.3",
       "name": "Verification of lib/domain/ directory structure",
       "status": "PASSED",
-      "duration_ms": 0.66,
+      "duration_ms": 2.28,
       "error_message": null,
       "details": {}
     },
@@ -864,7 +864,7 @@
       "test_id": "T1.17.4",
       "name": "Verification of lib/presentation/ directory structure",
       "status": "PASSED",
-      "duration_ms": 0.68,
+      "duration_ms": 0.94,
       "error_message": null,
       "details": {}
     },
@@ -874,7 +874,7 @@
       "test_id": "T1.17.5",
       "name": "Zero forbidden dependencies in domain layer",
       "status": "PASSED",
-      "duration_ms": 0.76,
+      "duration_ms": 1.75,
       "error_message": null,
       "details": {}
     },
@@ -884,7 +884,7 @@
       "test_id": "T1.18.1",
       "name": "ConnectionBloc state transitions",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -904,7 +904,7 @@
       "test_id": "T1.18.3",
       "name": "AlertBloc emits AlertReceived with critical flag",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -914,7 +914,7 @@
       "test_id": "T1.18.4",
       "name": "ConfigBloc emits ConfigUpdated on parameter change",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -924,7 +924,7 @@
       "test_id": "T1.18.5",
       "name": "WebrtcBloc handles connection lifecycle states",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -934,7 +934,7 @@
       "test_id": "T1.19.1",
       "name": "Connection status badge rendering",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -944,7 +944,7 @@
       "test_id": "T1.19.2",
       "name": "Battery level indicator card rendering",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.07,
       "error_message": null,
       "details": {}
     },
@@ -954,7 +954,7 @@
       "test_id": "T1.19.3",
       "name": "Real-time ultrasonic distance card rendering",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -964,7 +964,7 @@
       "test_id": "T1.19.4",
       "name": "System temperature and CPU load metric widgets",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -974,7 +974,7 @@
       "test_id": "T1.19.5",
       "name": "Navigation shortcut buttons to Live Monitor and Settings",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -984,7 +984,7 @@
       "test_id": "T1.20.1",
       "name": "Video view container layout 16:9",
       "status": "PASSED",
-      "duration_ms": 0.46,
+      "duration_ms": 0.63,
       "error_message": null,
       "details": {}
     },
@@ -994,7 +994,7 @@
       "test_id": "T1.20.2",
       "name": "Sensor telemetry HUD overlay on top of video",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -1014,7 +1014,7 @@
       "test_id": "T1.20.4",
       "name": "Fullscreen toggle or landscape orientation handling",
       "status": "PASSED",
-      "duration_ms": 0.6,
+      "duration_ms": 0.48,
       "error_message": null,
       "details": {}
     },
@@ -1024,7 +1024,7 @@
       "test_id": "T1.20.5",
       "name": "Audio track mute toggle button",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.0,
       "error_message": null,
       "details": {}
     },
@@ -1034,7 +1034,7 @@
       "test_id": "T1.21.1",
       "name": "Distance threshold slider configuration (20-200cm)",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -1054,7 +1054,7 @@
       "test_id": "T1.21.3",
       "name": "Device reboot confirmation dialog and action trigger",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -1104,7 +1104,7 @@
       "test_id": "T1.22.3",
       "name": "Formatted timestamp display (HH:mm:ss dd/MM)",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -1174,7 +1174,7 @@
       "test_id": "T2.1.5",
       "name": "Clock skew and out-of-order timestamp handling",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -1184,7 +1184,7 @@
       "test_id": "T2.2.1",
       "name": "Missing optional fields in telemetry JSON payload",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -1204,7 +1204,7 @@
       "test_id": "T2.2.3",
       "name": "Rapid telemetry flood throttling handling",
       "status": "PASSED",
-      "duration_ms": 0.14,
+      "duration_ms": 0.17,
       "error_message": null,
       "details": {}
     },
@@ -1214,7 +1214,7 @@
       "test_id": "T2.2.4",
       "name": "Unicode device IDs and special characters",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -1234,7 +1234,7 @@
       "test_id": "T2.3.1",
       "name": "Distance exactly at threshold boundary",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1254,7 +1254,7 @@
       "test_id": "T2.3.3",
       "name": "Large detected objects list 50+ objects",
       "status": "PASSED",
-      "duration_ms": 0.07,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1264,7 +1264,7 @@
       "test_id": "T2.3.4",
       "name": "Extremely long localized warning message string",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.0,
       "error_message": null,
       "details": {}
     },
@@ -1404,7 +1404,7 @@
       "test_id": "T2.6.3",
       "name": "Command payload with extra unexpected keys",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1434,7 +1434,7 @@
       "test_id": "T2.7.1",
       "name": "Network disconnect without TCP FIN triggers LWT",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.06,
       "error_message": null,
       "details": {}
     },
@@ -1444,7 +1444,7 @@
       "test_id": "T2.7.2",
       "name": "Broker failover handling",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -1454,7 +1454,7 @@
       "test_id": "T2.7.3",
       "name": "Rapid reconnect cycling",
       "status": "PASSED",
-      "duration_ms": 1.31,
+      "duration_ms": 1.86,
       "error_message": null,
       "details": {}
     },
@@ -1464,7 +1464,7 @@
       "test_id": "T2.7.4",
       "name": "Retained status message overwrite validation",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -1474,7 +1474,7 @@
       "test_id": "T2.7.5",
       "name": "Unrecognized status enum fallback",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -1484,7 +1484,7 @@
       "test_id": "T2.8.1",
       "name": "Truncated SDP offer string handling",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1494,7 +1494,7 @@
       "test_id": "T2.8.2",
       "name": "SDP offer with audio only",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1504,7 +1504,7 @@
       "test_id": "T2.8.3",
       "name": "SDP offer with video only",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1514,7 +1514,7 @@
       "test_id": "T2.8.4",
       "name": "Multiple simultaneous SDP offers from competing callers",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -1534,7 +1534,7 @@
       "test_id": "T2.9.1",
       "name": "SDP answer timeout handling",
       "status": "PASSED",
-      "duration_ms": 50.78,
+      "duration_ms": 55.39,
       "error_message": null,
       "details": {}
     },
@@ -1574,7 +1574,7 @@
       "test_id": "T2.9.5",
       "name": "Answer received after local peer cancelled connection",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -1604,7 +1604,7 @@
       "test_id": "T2.10.3",
       "name": "Mismatched sdpMid or out-of-bounds mLineIndex",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1614,7 +1614,7 @@
       "test_id": "T2.10.4",
       "name": "ICE candidate arriving before remote description",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1624,7 +1624,7 @@
       "test_id": "T2.10.5",
       "name": "STUN server unreachable fallback to host candidates",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1634,7 +1634,7 @@
       "test_id": "T2.11.1",
       "name": "Sudden 20% network packet loss resilience",
       "status": "PASSED",
-      "duration_ms": 0.55,
+      "duration_ms": 0.28,
       "error_message": null,
       "details": {}
     },
@@ -1644,7 +1644,7 @@
       "test_id": "T2.11.2",
       "name": "Video stream renegotiation upon resolution switch",
       "status": "PASSED",
-      "duration_ms": 1.57,
+      "duration_ms": 1.92,
       "error_message": null,
       "details": {}
     },
@@ -1654,7 +1654,7 @@
       "test_id": "T2.11.3",
       "name": "High jitter packet arrival handling",
       "status": "PASSED",
-      "duration_ms": 0.46,
+      "duration_ms": 0.45,
       "error_message": null,
       "details": {}
     },
@@ -1824,7 +1824,7 @@
       "test_id": "T2.14.5",
       "name": "Hotkey triggered during active WebRTC streaming",
       "status": "PASSED",
-      "duration_ms": 0.51,
+      "duration_ms": 0.46,
       "error_message": null,
       "details": {}
     },
@@ -1834,7 +1834,7 @@
       "test_id": "T2.15.1",
       "name": "Webcam device disconnect fallback to synthetic",
       "status": "PASSED",
-      "duration_ms": 0.52,
+      "duration_ms": 0.61,
       "error_message": null,
       "details": {}
     },
@@ -1844,7 +1844,7 @@
       "test_id": "T2.15.2",
       "name": "Incompatible resolution request fallback",
       "status": "PASSED",
-      "duration_ms": 8.25,
+      "duration_ms": 10.42,
       "error_message": null,
       "details": {}
     },
@@ -1854,7 +1854,7 @@
       "test_id": "T2.15.3",
       "name": "Extremely high synthetic HUD FPS capped to 30",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1864,7 +1864,7 @@
       "test_id": "T2.15.4",
       "name": "Synthetic generator under heavy CPU load frame drops",
       "status": "PASSED",
-      "duration_ms": 0.1,
+      "duration_ms": 0.15,
       "error_message": null,
       "details": {}
     },
@@ -1874,7 +1874,7 @@
       "test_id": "T2.15.5",
       "name": "Corrupted frame buffer handling",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -1884,7 +1884,7 @@
       "test_id": "T2.16.1",
       "name": "Audio packet stream buffer overrun handling",
       "status": "PASSED",
-      "duration_ms": 0.2,
+      "duration_ms": 0.33,
       "error_message": null,
       "details": {}
     },
@@ -1924,7 +1924,7 @@
       "test_id": "T2.16.5",
       "name": "Volume set to 0 with high amplitude audio",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -1934,7 +1934,7 @@
       "test_id": "T2.17.1",
       "name": "Circular dependency scan across project files",
       "status": "PASSED",
-      "duration_ms": 0.84,
+      "duration_ms": 1.96,
       "error_message": null,
       "details": {}
     },
@@ -1944,7 +1944,7 @@
       "test_id": "T2.17.2",
       "name": "Entity models have no framework dependencies",
       "status": "PASSED",
-      "duration_ms": 0.67,
+      "duration_ms": 0.88,
       "error_message": null,
       "details": {}
     },
@@ -1954,7 +1954,7 @@
       "test_id": "T2.17.3",
       "name": "Repository interface contract compliance",
       "status": "PASSED",
-      "duration_ms": 0.66,
+      "duration_ms": 5.35,
       "error_message": null,
       "details": {}
     },
@@ -1964,7 +1964,7 @@
       "test_id": "T2.17.4",
       "name": "Verification of analysis_options.yaml",
       "status": "PASSED",
-      "duration_ms": 0.65,
+      "duration_ms": 1.16,
       "error_message": null,
       "details": {}
     },
@@ -1974,7 +1974,7 @@
       "test_id": "T2.17.5",
       "name": "Code layout compliance with PROJECT.md",
       "status": "PASSED",
-      "duration_ms": 0.59,
+      "duration_ms": 1.25,
       "error_message": null,
       "details": {}
     },
@@ -1984,7 +1984,7 @@
       "test_id": "T2.18.1",
       "name": "Bloc close called while events pending",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -1994,7 +1994,7 @@
       "test_id": "T2.18.2",
       "name": "Duplicate event dispatch deduplication",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2004,7 +2004,7 @@
       "test_id": "T2.18.3",
       "name": "Exception thrown in event handler caught safely",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2014,7 +2014,7 @@
       "test_id": "T2.18.4",
       "name": "Cross-Bloc event subscription leak prevention",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2024,7 +2024,7 @@
       "test_id": "T2.18.5",
       "name": "App lifecycle background/foreground Bloc state preservation",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2034,7 +2034,7 @@
       "test_id": "T2.19.1",
       "name": "Screen orientation change portrait to landscape",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2044,7 +2044,7 @@
       "test_id": "T2.19.2",
       "name": "Small screen display scaling 320px width",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2054,7 +2054,7 @@
       "test_id": "T2.19.3",
       "name": "Accessibility 200% font scaling",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2064,7 +2064,7 @@
       "test_id": "T2.19.4",
       "name": "Rapid navigation cycling away and back",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2074,7 +2074,7 @@
       "test_id": "T2.19.5",
       "name": "Dark mode and light mode theme switching",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2084,7 +2084,7 @@
       "test_id": "T2.20.1",
       "name": "Screen lock during live streaming",
       "status": "PASSED",
-      "duration_ms": 0.4,
+      "duration_ms": 0.85,
       "error_message": null,
       "details": {}
     },
@@ -2094,7 +2094,7 @@
       "test_id": "T2.20.2",
       "name": "Video stream disconnect on Live Monitor screen",
       "status": "PASSED",
-      "duration_ms": 0.07,
+      "duration_ms": 0.61,
       "error_message": null,
       "details": {}
     },
@@ -2104,7 +2104,7 @@
       "test_id": "T2.20.3",
       "name": "Rapid entering and exiting Live Monitor screen",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.09,
       "error_message": null,
       "details": {}
     },
@@ -2114,7 +2114,7 @@
       "test_id": "T2.20.4",
       "name": "PTT button dragged off target before release",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -2134,7 +2134,7 @@
       "test_id": "T2.21.1",
       "name": "Sliders adjusted rapidly with debouncing",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2164,7 +2164,7 @@
       "test_id": "T2.21.4",
       "name": "Invalid MQTT broker IP/port format rejection",
       "status": "PASSED",
-      "duration_ms": 0.25,
+      "duration_ms": 0.28,
       "error_message": null,
       "details": {}
     },
@@ -2184,7 +2184,7 @@
       "test_id": "T2.22.1",
       "name": "Large alert history log 1000+ entries scrolling",
       "status": "PASSED",
-      "duration_ms": 0.06,
+      "duration_ms": 0.07,
       "error_message": null,
       "details": {}
     },
@@ -2234,7 +2234,7 @@
       "test_id": "T3.1",
       "name": "Telemetry interrupted by emergency hazard alert",
       "status": "PASSED",
-      "duration_ms": 0.05,
+      "duration_ms": 0.1,
       "error_message": null,
       "details": {}
     },
@@ -2244,7 +2244,7 @@
       "test_id": "T3.2",
       "name": "Telemetry dashboard updating while critical alert triggers heads-up",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -2274,7 +2274,7 @@
       "test_id": "T3.5",
       "name": "Reboot command triggers shutdown and LWT offline",
       "status": "PASSED",
-      "duration_ms": 0.04,
+      "duration_ms": 0.17,
       "error_message": null,
       "details": {}
     },
@@ -2284,7 +2284,7 @@
       "test_id": "T3.6",
       "name": "Complete WebRTC signaling loop offer, answer, and ice candidates",
       "status": "PASSED",
-      "duration_ms": 0.05,
+      "duration_ms": 0.1,
       "error_message": null,
       "details": {}
     },
@@ -2294,7 +2294,7 @@
       "test_id": "T3.7",
       "name": "Full-duplex video streaming and PTT audio playback",
       "status": "PASSED",
-      "duration_ms": 0.14,
+      "duration_ms": 0.45,
       "error_message": null,
       "details": {}
     },
@@ -2304,7 +2304,7 @@
       "test_id": "T3.8",
       "name": "Live monitor video feed overlaid with real-time telemetry HUD",
       "status": "PASSED",
-      "duration_ms": 0.22,
+      "duration_ms": 0.73,
       "error_message": null,
       "details": {}
     },
@@ -2324,7 +2324,7 @@
       "test_id": "T3.10",
       "name": "Mock Pi hotkey generates hazard and triggers heads-up alert",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2334,7 +2334,7 @@
       "test_id": "T3.11",
       "name": "Synthetic radar HUD animation synchronized with distance telemetry",
       "status": "PASSED",
-      "duration_ms": 0.49,
+      "duration_ms": 0.56,
       "error_message": null,
       "details": {}
     },
@@ -2394,7 +2394,7 @@
       "test_id": "T3.17",
       "name": "Simulated sensor fluctuations reflected in published telemetry",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2404,7 +2404,7 @@
       "test_id": "T3.18",
       "name": "Clean Architecture repository streams data to BLoC without leaks",
       "status": "PASSED",
-      "duration_ms": 0.81,
+      "duration_ms": 6.02,
       "error_message": null,
       "details": {}
     },
@@ -2414,7 +2414,7 @@
       "test_id": "T3.19",
       "name": "Tapping heads-up notification deep-links to Alert History screen",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -2424,7 +2424,7 @@
       "test_id": "T3.20",
       "name": "ICE candidate re-gathering maintains video stream continuity",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -2434,7 +2434,7 @@
       "test_id": "T3.21",
       "name": "Updating device ID in Settings switches subscription topic",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2444,7 +2444,7 @@
       "test_id": "T3.22",
       "name": "Sending MUTE command silences audio playback on Mock Pi",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -2454,7 +2454,7 @@
       "test_id": "T3.23",
       "name": "Critical obstacle alert flashes danger border on Live Monitor screen",
       "status": "PASSED",
-      "duration_ms": 0.0,
+      "duration_ms": 0.01,
       "error_message": null,
       "details": {}
     },
@@ -2464,7 +2464,7 @@
       "test_id": "T3.24",
       "name": "WebRTC offer while device offline handles timeout gracefully",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2474,7 +2474,7 @@
       "test_id": "Scenario_1",
       "name": "Cold-boot surveillance cycle with WebRTC negotiation and audio streaming",
       "status": "PASSED",
-      "duration_ms": 0.46,
+      "duration_ms": 0.97,
       "error_message": null,
       "details": {}
     },
@@ -2484,7 +2484,7 @@
       "test_id": "Scenario_2",
       "name": "Sudden obstacle danger alert notification and PTT voice warning",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.05,
       "error_message": null,
       "details": {}
     },
@@ -2494,7 +2494,7 @@
       "test_id": "Scenario_3",
       "name": "Dynamic parameter tuning in high noise environment",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2504,7 +2504,7 @@
       "test_id": "Scenario_4",
       "name": "Network disruption and automatic client reconnect cycle",
       "status": "PASSED",
-      "duration_ms": 10.63,
+      "duration_ms": 10.77,
       "error_message": null,
       "details": {}
     },
@@ -2514,7 +2514,7 @@
       "test_id": "Scenario_5",
       "name": "Battery depletion to 0% and power-off LWT supervision",
       "status": "PASSED",
-      "duration_ms": 0.04,
+      "duration_ms": 0.26,
       "error_message": null,
       "details": {}
     },
@@ -2524,7 +2524,7 @@
       "test_id": "Scenario_6",
       "name": "Manual hotkey hazard injection and chronological recording",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.03,
       "error_message": null,
       "details": {}
     },
@@ -2534,7 +2534,7 @@
       "test_id": "Scenario_7",
       "name": "Remote service restart command and sensor normalization",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.08,
       "error_message": null,
       "details": {}
     },
@@ -2544,7 +2544,7 @@
       "test_id": "Scenario_8",
       "name": "Multi-subscriber synchronization for family members",
       "status": "PASSED",
-      "duration_ms": 0.02,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     },
@@ -2554,7 +2554,7 @@
       "test_id": "Scenario_9",
       "name": "Push-to-Talk 5-turn voice intercom without audio clipping",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.02,
       "error_message": null,
       "details": {}
     },
@@ -2564,7 +2564,7 @@
       "test_id": "Scenario_10",
       "name": "Continuous 100-cycle telemetry burst stability without packet loss",
       "status": "PASSED",
-      "duration_ms": 0.3,
+      "duration_ms": 0.58,
       "error_message": null,
       "details": {}
     },
@@ -2574,7 +2574,7 @@
       "test_id": "Scenario_11",
       "name": "Emergency alert flood 10 bursts handled with exact sequencing",
       "status": "PASSED",
-      "duration_ms": 0.03,
+      "duration_ms": 0.07,
       "error_message": null,
       "details": {}
     },
@@ -2584,7 +2584,7 @@
       "test_id": "Scenario_12",
       "name": "Graceful degradation without WebRTC hardware with full telemetry active",
       "status": "PASSED",
-      "duration_ms": 0.01,
+      "duration_ms": 0.04,
       "error_message": null,
       "details": {}
     }
