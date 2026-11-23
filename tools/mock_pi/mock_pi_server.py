@@ -3,14 +3,13 @@ import cv2,numpy as np,av,sounddevice as sd
 import paho.mqtt.client as mqtt
 from aiortc import RTCPeerConnection,RTCConfiguration,RTCIceServer,RTCSessionDescription,VideoStreamTrack
 from aiortc.sdp import candidate_from_sdp
-Dev_cfg={"dev_id":"pi4_01","brk_url":"broker.emqx.io","brk_prt":1883,"cam_idx":0,"syn_mod":False,"hed_mod":False,"dist_lim":80.0,"spk_vol":80,"alt_frq":2000,"fps_num":15,"man_dst":False,"prev_vol":80,"mock_sen":False,"trig_pin":23,"echo_pin":24}
-Sen_dat={"bat_pct":85.0,"temp_c":48.5,"cpu_pct":32.0,"dist_cm":-1.0,"cam_on":False,"alt_on":False,"last_alt":0.0}
+Dev_cfg={"dev_id":"pi4_01","brk_url":"broker.emqx.io","brk_prt":1883,"cam_idx":0,"syn_mod":False,"hed_mod":False,"dist_lim":80.0,"spk_vol":80,"alt_frq":2000,"fps_num":15,"man_dst":False,"prev_vol":80}
+Sen_dat={"bat_pct":85.0,"temp_c":48.5,"cpu_pct":32.0,"dist_cm":145.2,"cam_on":False,"alt_on":False,"last_alt":0.0}
 Cli_mq=None
 Pc_set=set()
 Ice_buf=[]
 Vid_trk=None
 Aud_snk=None
-Hcsr_obj=None
 Evt_lop=None
 Is_run=True
 Log_fmt=logging.Formatter("[%(asctime)s] [%(levelname)s] %(message)s","%H:%M:%S")
@@ -65,51 +64,6 @@ class AudSnk:
 			except Exception:
 				pass
 			self._strm=None
-class HcsrDrvr:
-	def __init__(self,trig_pin=23,echo_pin=24):
-		self.trig_pin=trig_pin
-		self.echo_pin=echo_pin
-		self.is_hw=False
-		self.gpio=None
-		try:
-			import RPi.GPIO as GPIO
-			self.gpio=GPIO
-			self.gpio.setwarnings(False)
-			self.gpio.setmode(self.gpio.BCM)
-			self.gpio.setup(self.trig_pin,self.gpio.OUT)
-			self.gpio.setup(self.echo_pin,self.gpio.IN)
-			self.gpio.output(self.trig_pin,self.gpio.LOW)
-			self.is_hw=True
-			log_inf(f"Configured HC-SR04 ultrasonic sensor on GPIO TRIG={trig_pin}, ECHO={echo_pin}")
-		except Exception as err:
-			self.is_hw=False
-			log_wrn(f"HC-SR04 GPIO init skipped: {err}")
-	def measure(self):
-		if not self.is_hw or self.gpio is None: return -1.0
-		try:
-			self.gpio.output(self.trig_pin,self.gpio.HIGH)
-			time.sleep(0.00001)
-			self.gpio.output(self.trig_pin,self.gpio.LOW)
-			p_sta=time.time()
-			t_max=p_sta+0.03
-			while self.gpio.input(self.echo_pin)==self.gpio.LOW:
-				p_sta=time.time()
-				if p_sta>t_max: return -1.0
-			p_end=time.time()
-			while self.gpio.input(self.echo_pin)==self.gpio.HIGH:
-				p_end=time.time()
-				if p_end>t_max: return -1.0
-			dst_cm=round(((p_end-p_sta)*34300.0)/2.0,1)
-			if 3.0<=dst_cm<=400.0: return dst_cm
-			return -1.0
-		except Exception:
-			return -1.0
-	def close(self):
-		if self.is_hw and self.gpio is not None:
-			try:
-				self.gpio.cleanup([self.trig_pin,self.echo_pin])
-			except Exception:
-				pass
 class PiVidTrk(VideoStreamTrack):
 	def __init__(self,cam_idx=0,syn_mod=False):
 		super().__init__()
@@ -414,13 +368,7 @@ async def tel_lop(interval=3.0):
 			base_cpu+=35.0
 		Sen_dat["cpu_pct"]=round(min(98.0,base_cpu),1)
 		if not Dev_cfg["man_dst"]:
-			if Dev_cfg["mock_sen"]:
-				if Sen_dat["dist_cm"]<0.0:
-					Sen_dat["dist_cm"]=145.2
-				Sen_dat["dist_cm"]=round(max(20.0,min(280.0,Sen_dat["dist_cm"]+random.uniform(-4.0,4.0))),1)
-			else:
-				cur_hw=Hcsr_obj.measure() if Hcsr_obj else -1.0
-				Sen_dat["dist_cm"]=cur_hw
+			Sen_dat["dist_cm"]=round(max(20.0,min(280.0,Sen_dat["dist_cm"]+random.uniform(-4.0,4.0))),1)
 		tel_obj={
 			"device_id":Dev_cfg["dev_id"],
 			"timestamp":now_ts,
@@ -452,19 +400,14 @@ async def cli_lop():
 				log_inf("Manual hazard alert triggered via console")
 				chk_alt(forced=True)
 			elif cmd_op=="d" and len(tok_lst)>1:
-				if tok_lst[1].lower()=="auto":
-					Dev_cfg["man_dst"]=False
-					Sen_dat["dist_cm"]=-1.0
-					log_inf("Distance sensor reset to hardware auto reading")
-				else:
-					try:
-						val_dst=float(tok_lst[1])
-						Dev_cfg["man_dst"]=True
-						Sen_dat["dist_cm"]=val_dst
-						log_inf(f"Simulated distance manually set to {val_dst:.1f} cm")
-						chk_alt()
-					except ValueError:
-						print("Invalid distance parameter. Use: d <cm> or d auto")
+				try:
+					val_dst=float(tok_lst[1])
+					Dev_cfg["man_dst"]=True
+					Sen_dat["dist_cm"]=val_dst
+					log_inf(f"Simulated distance manually set to {val_dst:.1f} cm")
+					chk_alt()
+				except ValueError:
+					print("Invalid distance parameter. Use: d <cm>")
 			elif cmd_op=="b" and len(tok_lst)>1:
 				try:
 					val_bat=float(tok_lst[1])
@@ -511,16 +454,12 @@ def parse_arg():
 	prs.add_argument("--synthetic",action="store_true",help="Force synthetic radar HUD video feed")
 	prs.add_argument("--headless",action="store_true",help="Disable interactive console input")
 	prs.add_argument("--interval",type=float,default=3.0,help="Telemetry publication interval in seconds (default: 3.0)")
-	prs.add_argument("--mock-sensor",action="store_true",help="Enable simulated mock distance when hardware sensor is missing")
-	prs.add_argument("--trig-pin",type=int,default=23,help="HC-SR04 trigger GPIO pin (default: 23)")
-	prs.add_argument("--echo-pin",type=int,default=24,help="HC-SR04 echo GPIO pin (default: 24)")
 	return prs.parse_args()
 async def run_srv():
-	global Vid_trk,Aud_snk,Cli_mq,Evt_lop,Hcsr_obj
+	global Vid_trk,Aud_snk,Cli_mq,Evt_lop
 	Evt_lop=asyncio.get_running_loop()
 	Vid_trk=PiVidTrk(cam_idx=Dev_cfg["cam_idx"],syn_mod=Dev_cfg["syn_mod"])
 	Aud_snk=AudSnk()
-	Hcsr_obj=HcsrDrvr(trig_pin=Dev_cfg["trig_pin"],echo_pin=Dev_cfg["echo_pin"])
 	cid=f"{Dev_cfg['dev_id']}_mock_{int(time.time()*1000)%100000}"
 	try:
 		Cli_mq=mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,client_id=cid)
@@ -554,8 +493,6 @@ async def run_srv():
 			except Exception:
 				pass
 		Pc_set.clear()
-		if Hcsr_obj is not None:
-			Hcsr_obj.close()
 		Vid_trk.close()
 		Aud_snk.close()
 		Cli_mq.loop_stop()
@@ -578,9 +515,6 @@ def main():
 	Dev_cfg["syn_mod"]=arg_obj.synthetic
 	Dev_cfg["hed_mod"]=arg_obj.headless
 	Dev_cfg["tel_int"]=arg_obj.interval
-	Dev_cfg["mock_sen"]=arg_obj.mock_sensor
-	Dev_cfg["trig_pin"]=arg_obj.trig_pin
-	Dev_cfg["echo_pin"]=arg_obj.echo_pin
 	try:
 		asyncio.run(run_srv())
 	except (KeyboardInterrupt,SystemExit):

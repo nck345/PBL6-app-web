@@ -1,8 +1,6 @@
 # Raspberry Pi 4 Mock Simulator (Chạy giả lập trên máy tính)
 
-Bộ giả lập phần cứng Raspberry Pi 4 chạy trên máy tính (PC / Laptop Windows / macOS / Linux) phục vụ phát triển và kiểm thử ứng dụng Flutter giám sát hỗ trợ người khiếm thị khi không có bo mạch Raspberry Pi vật lý.
-
-> **Lưu ý**: Nếu bạn đang triển khai trên **Raspberry Pi 4 thật**, vui lòng sử dụng gói dịch vụ phần cứng chính thức tại thư mục [tools/pi_edge/](../pi_edge/README.md) (`pi_server.py`).
+Bộ giả lập phần cứng Raspberry Pi 4 chạy trên máy tính (PC / Laptop Windows, macOS hoặc Linux) phục vụ phát triển và kiểm thử ứng dụng Flutter giám sát người khiếm thị mà không cần mạch Raspberry Pi thật.
 
 Công cụ mock simulator này cung cấp luồng telemetry mô phỏng, bảng điều khiển bàn phím tùy biến số liệu cảm biến (khoảng cách, pin, nhiệt độ), phát cảnh báo nguy hiểm thử nghiệm, truyền luồng video WebRTC (webcam laptop hoặc radar HUD đồ họa) và nhận luồng âm thanh micro Push-to-Talk (PTT).
 
@@ -13,7 +11,7 @@ Công cụ mock simulator này cung cấp luồng telemetry mô phỏng, bảng 
 ### Yêu cầu tiên quyết
 - Python 3.10 trở lên (đã kiểm thử tương thích hoàn toàn trên Python 3.14).
 - Kết nối Internet tới MQTT broker (mặc định EMQX public broker `broker.emqx.io` port 1883) và Google STUN server (UDP port 19302).
-- Webcam và loa máy tính (tùy chọn, mock server tự động chuyển sang chế độ giả lập nếu thiếu phần cứng).
+- Webcam và loa máy tính (tùy chọn, mock server tự động chuyển sang chế độ radar HUD nếu máy không có camera).
 
 ### Cài đặt thư viện
 Chạy lệnh cài đặt từ thư mục gốc của dự án:
@@ -27,21 +25,17 @@ Các thư viện chính:
 - `aiortc>=1.6.0`: Ngăn xếp giao thức WebRTC P2P và xử lý luồng media.
 - `opencv-python>=4.8.0`: Thu nhận khung hình webcam và vẽ canvas radar HUD giả lập.
 - `numpy>=1.24.0`: Xử lý mảng ma trận pixel và tín hiệu âm thanh PCM.
-- `sounddevice>=0.4.6`: Phát âm thanh đàm thoại PTT ra loa với cơ chế fallback tự động.
+- `sounddevice>=0.4.6`: Phát âm thanh đàm thoại PTT ra loa máy tính.
 - `av>=10.0.0`: Mã hóa giải mã khung hình video và audio.
 
 ---
 
 ## 2. Hướng dẫn khởi chạy
 
-### Chạy ở chế độ mặc định (tự động nhận diện webcam)
-Mã nguồn tự động dò tìm camera USB qua chuẩn V4L2 (ưu tiên index 1 `/dev/video1`, index 0 `/dev/video0`) với định dạng MJPG 640x480 và bộ đệm 1 khung hình. Chỉ khi không tìm thấy camera vật lý mới tự động chuyển sang radar HUD giả lập.
+### Chạy ở chế độ mặc định (tự động nhận diện webcam laptop)
+Mã nguồn tự động nhận diện webcam máy tính. Nếu không tìm thấy camera vật lý, server tự động chuyển sang radar HUD giả lập.
 ```powershell
 python tools/mock_pi/mock_pi_server.py
-```
-Hoặc trên Raspberry Pi dùng `uv`:
-```bash
-uv run mock_pi_server.py
 ```
 
 ### Chạy chế độ radar HUD giả lập (không dùng webcam)
@@ -69,13 +63,10 @@ python tools/mock_pi/mock_pi_server.py --device-id pi4_test_01 --broker broker.e
 | `--device-id` | `pi4_01` | Mã định danh thiết bị, quyết định tiền tố topic MQTT `pbl6/{device_id}/...`. |
 | `--broker` | `broker.emqx.io` | Địa chỉ máy chủ MQTT broker. |
 | `--port` | `1883` | Cổng kết nối MQTT broker. |
-| `--camera-index` | `0` | Chỉ số webcam vật lý của hệ thống. |
+| `--camera-index` | `0` | Chỉ số webcam vật lý của máy tính. |
 | `--synthetic` | `False` | Ép buộc sử dụng radar HUD đồ họa thay vì mở webcam vật lý. |
 | `--headless` | `False` | Tắt vòng lặp đọc lệnh từ console terminal. |
 | `--interval` | `3.0` | Chu kỳ phát bản tin telemetry tính theo giây. |
-| `--mock-sensor` | `False` | Bật chế độ giả lập số liệu ngẫu nhiên khi chưa cắm phần cứng cảm biến. |
-| `--trig-pin` | `23` | Chân GPIO Trigger của cảm biến khoảng cách HC-SR04. |
-| `--echo-pin` | `24` | Chân GPIO Echo của cảm biến khoảng cách HC-SR04. |
 
 ---
 
@@ -86,9 +77,8 @@ Khi chạy không kèm cờ `--headless`, người dùng có thể nhập trực
 | Lệnh | Mô tả |
 |---|---|
 | `a` hoặc `alert` | Kích hoạt ngay lập tức một bản tin cảnh báo nguy hiểm tới topic alert. |
-| `d <cm>` | Cố định khoảng cách siêu âm mô phỏng, ví dụ `d 25` để kích hoạt vùng nguy hiểm hoặc `d 160` để an toàn. |
-| `d auto` | Trả cảm biến về chế độ đọc tự động từ phần cứng GPIO HC-SR04. |
-| `b <pct>` | Cố định phần trăm pin mô phỏng, ví dụ `b 15`. |
+| `d <cm>` | Cố định khoảng cách siêu âm mô phỏng, ví dụ `d 25` để kích hoạt cảnh báo nguy hiểm, `d 160` để an toàn, hoặc `d -1` để giả lập mất cảm biến. |
+| `b <pct>` | Cố định phần trăm pin mô phỏng, ví dụ `b 15` để kiểm thử cảnh báo pin yếu. |
 | `t <c>` | Cố định nhiệt độ CPU mô phỏng, ví dụ `t 62.5`. |
 | `reboot` | Giả lập quá trình khởi động lại thiết bị: chuyển offline 3 giây rồi online trở lại. |
 | `mute` | Tắt âm lượng loa của thiết bị về 0. |
