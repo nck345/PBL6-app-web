@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'alert_history_screen.dart';
+import 'gps_map_screen.dart';
 import 'home_dashboard_screen.dart';
 import 'live_monitor_screen.dart';
 import 'settings_screen.dart';
@@ -21,6 +22,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 				onNavigateToLive: () => setState(() => _selectedIndex = 1),
 			),
 			const LiveMonitorScreen(),
+			const GpsMapScreen(),
 			const AlertHistoryScreen(),
 			const SettingsScreen(),
 		];
@@ -54,6 +56,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 											icon: Icon(Icons.videocam_outlined),
 											selectedIcon: Icon(Icons.videocam),
 											label: Text('Camera POV'),
+										),
+										NavigationRailDestination(
+											icon: Icon(Icons.map_outlined),
+											selectedIcon: Icon(Icons.map),
+											label: Text('Bản đồ GPS'),
 										),
 										NavigationRailDestination(
 											icon: Icon(Icons.notifications_outlined),
@@ -97,6 +104,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 								icon: Icon(Icons.videocam_outlined),
 								selectedIcon: Icon(Icons.videocam),
 								label: 'Camera POV',
+							),
+							NavigationDestination(
+								icon: Icon(Icons.map_outlined),
+								selectedIcon: Icon(Icons.map),
+								label: 'Bản đồ GPS',
 							),
 							NavigationDestination(
 								icon: Icon(Icons.notifications_outlined),

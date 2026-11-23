@@ -63,13 +63,14 @@ void main() {
 		);
 	}
 
-	group('MainNavigationScreen Widget Tests (W-NAV-01..04)', () {
-		testWidgets('W-NAV-01: Displays all 4 navigation destinations', (tester) async {
+	group('MainNavigationScreen Widget Tests (W-NAV-01..05)', () {
+		testWidgets('W-NAV-01: Displays all 5 navigation destinations', (tester) async {
 			await tester.pumpWidget(createScreen());
 			await tester.pump();
 
 			expect(find.text('Tổng quan'), findsWidgets);
 			expect(find.text('Camera POV'), findsOneWidget);
+			expect(find.text('Bản đồ GPS'), findsOneWidget);
 			expect(find.text('Cảnh báo'), findsOneWidget);
 			expect(find.text('Cài đặt'), findsOneWidget);
 		});
@@ -93,18 +94,25 @@ void main() {
 			var stack = tester.widget<IndexedStack>(find.byType(IndexedStack));
 			expect(stack.index, equals(1));
 
-			// Tap Cảnh báo (index 2)
-			await tester.tap(find.text('Cảnh báo'));
+			// Tap Bản đồ GPS (index 2)
+			await tester.tap(find.text('Bản đồ GPS'));
 			await tester.pump();
 			stack = tester.widget<IndexedStack>(find.byType(IndexedStack));
 			expect(stack.index, equals(2));
-			expect(find.text('Lịch sử Cảnh báo'), findsOneWidget);
+			expect(find.text('Bản đồ Giám sát GPS'), findsOneWidget);
 
-			// Tap Cài đặt (index 3)
-			await tester.tap(find.text('Cài đặt'));
+			// Tap Cảnh báo (index 3)
+			await tester.tap(find.text('Cảnh báo'));
 			await tester.pump();
 			stack = tester.widget<IndexedStack>(find.byType(IndexedStack));
 			expect(stack.index, equals(3));
+			expect(find.text('Lịch sử Cảnh báo'), findsOneWidget);
+
+			// Tap Cài đặt (index 4)
+			await tester.tap(find.text('Cài đặt'));
+			await tester.pump();
+			stack = tester.widget<IndexedStack>(find.byType(IndexedStack));
+			expect(stack.index, equals(4));
 			expect(find.text('Cài đặt & Điều khiển'), findsOneWidget);
 
 			// Tap Tổng quan (index 0)

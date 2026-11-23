@@ -108,7 +108,7 @@ flutter pub get
   ```powershell
   flutter analyze
   ```
-- **Chạy toàn bộ 130 bài kiểm thử đơn vị và giao diện Flutter**:
+- **Chạy toàn bộ 142 bài kiểm thử đơn vị và giao diện Flutter**:
   ```powershell
   flutter test
   ```
@@ -136,11 +136,11 @@ PBL6-app-web/
 │   ├── domain/                            # Thực thể nghiệp vụ và Repository contracts
 │   └── presentation/
 │       ├── bloc/                          # Quản lý trạng thái BLoC
-│       ├── screens/                       # Dashboard, Camera POV, Cảnh báo, Cài đặt
+│       ├── screens/                       # Dashboard, Camera POV, Bản đồ GPS, Cảnh báo, Cài đặt
 │       └── widgets/                       # Nút Push-to-Talk, biểu đồ, thẻ chỉ số
 ├── tools/
 │   └── mock_pi/                           # Bộ giả lập Raspberry Pi 4 bằng Python
 ├── docs/
 │   └── ARCHITECTURE.md                    # Tài liệu kiến trúc và đặc tả chi tiết
-└── test/                                  # 130 bài Unit, Widget và E2E tests
+└── test/                                  # 142 bài Unit, Widget và E2E tests
 ```
