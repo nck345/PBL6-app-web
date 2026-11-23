@@ -86,9 +86,16 @@ class MqttDatasource {
       _statusController.add('connected');
     };
 
+    client.setProtocolV311();
     _client = client;
     try {
-      final status = await client.connect();
+      final status = await client.connect().timeout(
+        const Duration(seconds: 8),
+        onTimeout: () {
+          _statusController.add('error');
+          return null;
+        },
+      );
       if (status?.state == MqttConnectionState.connected) {
         _listenToUpdates();
         return true;

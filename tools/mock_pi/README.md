@@ -8,7 +8,7 @@ Bộ giả lập phần cứng Raspberry Pi 4 phục vụ phát triển và ki�
 
 ### Yêu cầu tiên quyết
 - Python 3.10 trở lên (đã kiểm thử tương thích hoàn toàn trên Python 3.14).
-- Kết nối Internet tới MQTT broker (mặc định HiveMQ public broker port 1883) và Google STUN server (UDP port 19302).
+- Kết nối Internet tới MQTT broker (mặc định EMQX public broker `broker.emqx.io` port 1883) và Google STUN server (UDP port 19302).
 - Webcam và loa máy tính (tùy chọn, mock server tự động chuyển sang chế độ giả lập nếu thiếu phần cứng).
 
 ### Cài đặt thư viện
@@ -48,7 +48,7 @@ python tools/mock_pi/mock_pi_server.py --headless --synthetic
 
 ### Tùy chỉnh Device ID và MQTT Broker
 ```powershell
-python tools/mock_pi/mock_pi_server.py --device-id pi4_test_01 --broker broker.hivemq.com --port 1883 --interval 3.0
+python tools/mock_pi/mock_pi_server.py --device-id pi4_test_01 --broker broker.emqx.io --port 1883 --interval 3.0
 ```
 
 ---
@@ -58,7 +58,7 @@ python tools/mock_pi/mock_pi_server.py --device-id pi4_test_01 --broker broker.h
 | Tham số | Giá trị mặc định | Giải thích |
 |---|---|---|
 | `--device-id` | `pi4_01` | Mã định danh thiết bị, quyết định tiền tố topic MQTT `pbl6/{device_id}/...`. |
-| `--broker` | `broker.hivemq.com` | Địa chỉ máy chủ MQTT broker. |
+| `--broker` | `broker.emqx.io` | Địa chỉ máy chủ MQTT broker. |
 | `--port` | `1883` | Cổng kết nối MQTT broker. |
 | `--camera-index` | `0` | Chỉ số webcam vật lý của hệ thống. |
 | `--synthetic` | `False` | Ép buộc sử dụng radar HUD đồ họa thay vì mở webcam vật lý. |

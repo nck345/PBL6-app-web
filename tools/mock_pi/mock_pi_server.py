@@ -3,7 +3,7 @@ import cv2,numpy as np,av,sounddevice as sd
 import paho.mqtt.client as mqtt
 from aiortc import RTCPeerConnection,RTCConfiguration,RTCIceServer,RTCSessionDescription,VideoStreamTrack
 from aiortc.sdp import candidate_from_sdp
-Dev_cfg={"dev_id":"pi4_01","brk_url":"broker.hivemq.com","brk_prt":1883,"cam_idx":0,"syn_mod":False,"hed_mod":False,"dist_lim":80.0,"spk_vol":80,"alt_frq":2000,"fps_num":15,"man_dst":False,"prev_vol":80}
+Dev_cfg={"dev_id":"pi4_01","brk_url":"broker.emqx.io","brk_prt":1883,"cam_idx":0,"syn_mod":False,"hed_mod":False,"dist_lim":80.0,"spk_vol":80,"alt_frq":2000,"fps_num":15,"man_dst":False,"prev_vol":80}
 Sen_dat={"bat_pct":85.0,"temp_c":48.5,"cpu_pct":32.0,"dist_cm":145.2,"cam_on":False,"alt_on":False,"last_alt":0.0}
 Cli_mq=None
 Pc_set=set()
@@ -419,7 +419,7 @@ def sig_hdl(sig,frm):
 def parse_arg():
 	prs=argparse.ArgumentParser(description="Raspberry Pi 4 Mock Server for PBL6 Assistive Monitor")
 	prs.add_argument("--device-id",default="pi4_01",help="MQTT device ID (default: pi4_01)")
-	prs.add_argument("--broker",default="broker.hivemq.com",help="MQTT broker host (default: broker.hivemq.com)")
+	prs.add_argument("--broker",default="broker.emqx.io",help="MQTT broker host (default: broker.emqx.io)")
 	prs.add_argument("--port",type=int,default=1883,help="MQTT broker port (default: 1883)")
 	prs.add_argument("--camera-index",type=int,default=0,help="Webcam camera index (default: 0)")
 	prs.add_argument("--synthetic",action="store_true",help="Force synthetic radar HUD video feed")
