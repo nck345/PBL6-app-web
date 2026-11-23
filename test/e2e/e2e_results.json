@@ -1,0 +1,2592 @@
+{
+  "summary": {
+    "total_tests": 256,
+    "passed": 256,
+    "failed": 0,
+    "pass_rate_pct": 100.0,
+    "by_tier": {
+      "Tier_1": {
+        "total": 110,
+        "passed": 110,
+        "failed": 0
+      },
+      "Tier_2": {
+        "total": 110,
+        "passed": 110,
+        "failed": 0
+      },
+      "Tier_3": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0
+      },
+      "Tier_4": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0
+      }
+    }
+  },
+  "records": [
+    {
+      "tier": 1,
+      "feature_id": "F1",
+      "test_id": "T1.1.1",
+      "name": "Telemetry publication interval verification",
+      "status": "PASSED",
+      "duration_ms": 10.12,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F1",
+      "test_id": "T1.1.2",
+      "name": "Valid JSON payload structure",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F1",
+      "test_id": "T1.1.3",
+      "name": "Mandatory keys presence",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F1",
+      "test_id": "T1.1.4",
+      "name": "Telemetry QoS 0 confirmation",
+      "status": "PASSED",
+      "duration_ms": 0.05,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F1",
+      "test_id": "T1.1.5",
+      "name": "Sequence monotonic timestamps",
+      "status": "PASSED",
+      "duration_ms": 5.21,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F2",
+      "test_id": "T1.2.1",
+      "name": "Ingestion of standard telemetry packet",
+      "status": "PASSED",
+      "duration_ms": 0.06,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F2",
+      "test_id": "T1.2.2",
+      "name": "Mapping battery percentage to battery gauge",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F2",
+      "test_id": "T1.2.3",
+      "name": "Mapping ultrasonic distance to card widget state",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F2",
+      "test_id": "T1.2.4",
+      "name": "Temperature update propagation",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F2",
+      "test_id": "T1.2.5",
+      "name": "Re-render trigger on successive packets",
+      "status": "PASSED",
+      "duration_ms": 0.04,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F3",
+      "test_id": "T1.3.1",
+      "name": "Trigger obstacle hazard when distance < threshold",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F3",
+      "test_id": "T1.3.2",
+      "name": "Alert message topic publication with QoS 1",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F3",
+      "test_id": "T1.3.3",
+      "name": "Critical alert level header payload validation",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F3",
+      "test_id": "T1.3.4",
+      "name": "Detected objects array format validation",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F3",
+      "test_id": "T1.3.5",
+      "name": "Unique event ID generation",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F4",
+      "test_id": "T1.4.1",
+      "name": "High-priority notification channel configuration",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F4",
+      "test_id": "T1.4.2",
+      "name": "Heads-up banner trigger upon alert",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F4",
+      "test_id": "T1.4.3",
+      "name": "Sound and vibration flag activation on critical alert",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F4",
+      "test_id": "T1.4.4",
+      "name": "Alert message content matching notification body",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F4",
+      "test_id": "T1.4.5",
+      "name": "Notification tap navigation event payload",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F5",
+      "test_id": "T1.5.1",
+      "name": "Publish config change payload with retain=True",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F5",
+      "test_id": "T1.5.2",
+      "name": "Update distance threshold parameter",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F5",
+      "test_id": "T1.5.3",
+      "name": "Update speaker volume parameter",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F5",
+      "test_id": "T1.5.4",
+      "name": "Detection FPS adjustment",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F5",
+      "test_id": "T1.5.5",
+      "name": "Mock server application of updated config",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F6",
+      "test_id": "T1.6.1",
+      "name": "Dispatch REBOOT command",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F6",
+      "test_id": "T1.6.2",
+      "name": "Dispatch RESTART_SERVICE command",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F6",
+      "test_id": "T1.6.3",
+      "name": "Dispatch MUTE command",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F6",
+      "test_id": "T1.6.4",
+      "name": "Dispatch UNMUTE command",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F6",
+      "test_id": "T1.6.5",
+      "name": "Dispatch TRIGGER_BUZZER command",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F7",
+      "test_id": "T1.7.1",
+      "name": "Clean connect with LWT configured",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F7",
+      "test_id": "T1.7.2",
+      "name": "Online status publication on connect",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F7",
+      "test_id": "T1.7.3",
+      "name": "Offline status LWT publication on ungraceful disconnect",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F7",
+      "test_id": "T1.7.4",
+      "name": "Retain flag set on status topic messages",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F7",
+      "test_id": "T1.7.5",
+      "name": "App UI reflects device online/offline banner transition",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F8",
+      "test_id": "T1.8.1",
+      "name": "Client creates WebRTC SDP Offer with video/audio",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F8",
+      "test_id": "T1.8.2",
+      "name": "SDP Offer serialized into JSON envelope",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F8",
+      "test_id": "T1.8.3",
+      "name": "Publish SDP Offer to MQTT topic",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F8",
+      "test_id": "T1.8.4",
+      "name": "Validation of valid SDP syntax",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F8",
+      "test_id": "T1.8.5",
+      "name": "Subscription to offer topic by Mock Pi",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F9",
+      "test_id": "T1.9.1",
+      "name": "Mock Pi receives SDP Offer",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F9",
+      "test_id": "T1.9.2",
+      "name": "Mock Pi creates SDP Answer",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F9",
+      "test_id": "T1.9.3",
+      "name": "Mock Pi publishes answer to MQTT",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F9",
+      "test_id": "T1.9.4",
+      "name": "Answer JSON payload validation",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F9",
+      "test_id": "T1.9.5",
+      "name": "Client receives SDP Answer",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F10",
+      "test_id": "T1.10.1",
+      "name": "Client candidate discovery and publication",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F10",
+      "test_id": "T1.10.2",
+      "name": "Pi candidate discovery and publication",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F10",
+      "test_id": "T1.10.3",
+      "name": "Candidate JSON payload structure validation",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F10",
+      "test_id": "T1.10.4",
+      "name": "Bi-directional candidate ingestion without deadlock",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F10",
+      "test_id": "T1.10.5",
+      "name": "STUN server configuration verification",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F11",
+      "test_id": "T1.11.1",
+      "name": "Mock Pi initiates video track with FPS 15-30",
+      "status": "PASSED",
+      "duration_ms": 153.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F11",
+      "test_id": "T1.11.2",
+      "name": "Video stream RTP packet flow establishment",
+      "status": "PASSED",
+      "duration_ms": 0.49,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F11",
+      "test_id": "T1.11.3",
+      "name": "Frame dimension verification 640x480",
+      "status": "PASSED",
+      "duration_ms": 0.45,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F11",
+      "test_id": "T1.11.4",
+      "name": "Latency measurement under 300ms ceiling",
+      "status": "PASSED",
+      "duration_ms": 0.47,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F11",
+      "test_id": "T1.11.5",
+      "name": "Frame decoding without rendering crash",
+      "status": "PASSED",
+      "duration_ms": 0.48,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F12",
+      "test_id": "T1.12.1",
+      "name": "Press-and-hold trigger on PTT button activates audio track",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F12",
+      "test_id": "T1.12.2",
+      "name": "Audio RTP packet stream transmission to Mock Pi",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F12",
+      "test_id": "T1.12.3",
+      "name": "Audio track mute on PTT button release",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F12",
+      "test_id": "T1.12.4",
+      "name": "Visual UI indicator during active recording",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F12",
+      "test_id": "T1.12.5",
+      "name": "Mock Pi audio sink receipt and playback handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F13",
+      "test_id": "T1.13.1",
+      "name": "Ultrasonic distance random walk within plausible range",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F13",
+      "test_id": "T1.13.2",
+      "name": "Battery drain simulation over time",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F13",
+      "test_id": "T1.13.3",
+      "name": "CPU temperature fluctuations within normal envelope",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F13",
+      "test_id": "T1.13.4",
+      "name": "CPU usage fluctuation based on encoding workload",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F13",
+      "test_id": "T1.13.5",
+      "name": "Plausible sensor noise injection without illegal values",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F14",
+      "test_id": "T1.14.1",
+      "name": "Hotkey listener registration in Mock Pi",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F14",
+      "test_id": "T1.14.2",
+      "name": "Pressing hotkey triggers immediate hazard alert",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F14",
+      "test_id": "T1.14.3",
+      "name": "Immediate distance drop below threshold upon hotkey",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F14",
+      "test_id": "T1.14.4",
+      "name": "Console log output confirms manual hazard injection",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F14",
+      "test_id": "T1.14.5",
+      "name": "Debounce / rate limit check on rapid hotkey presses",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F15",
+      "test_id": "T1.15.1",
+      "name": "Synthetic radar HUD generator initialization",
+      "status": "PASSED",
+      "duration_ms": 0.57,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F15",
+      "test_id": "T1.15.2",
+      "name": "Radar sweep line animation progression per frame",
+      "status": "PASSED",
+      "duration_ms": 0.45,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F15",
+      "test_id": "T1.15.3",
+      "name": "Sensor overlay rendering on synthetic video",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F15",
+      "test_id": "T1.15.4",
+      "name": "Fallback from physical camera to synthetic feeder",
+      "status": "PASSED",
+      "duration_ms": 0.46,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F15",
+      "test_id": "T1.15.5",
+      "name": "Timestamp watermarking in synthetic frames",
+      "status": "PASSED",
+      "duration_ms": 0.1,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F16",
+      "test_id": "T1.16.1",
+      "name": "Audio sink buffer allocation in Mock Pi",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F16",
+      "test_id": "T1.16.2",
+      "name": "Audio packet reception and decoding",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F16",
+      "test_id": "T1.16.3",
+      "name": "Handling audio stream pause/resume",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F16",
+      "test_id": "T1.16.4",
+      "name": "Graceful handling of silent or empty audio packets",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F16",
+      "test_id": "T1.16.5",
+      "name": "Speaker volume parameter application to gain",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F17",
+      "test_id": "T1.17.1",
+      "name": "Verification of lib/core/ directory structure",
+      "status": "PASSED",
+      "duration_ms": 1.31,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F17",
+      "test_id": "T1.17.2",
+      "name": "Verification of lib/data/ directory structure",
+      "status": "PASSED",
+      "duration_ms": 0.69,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F17",
+      "test_id": "T1.17.3",
+      "name": "Verification of lib/domain/ directory structure",
+      "status": "PASSED",
+      "duration_ms": 0.64,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F17",
+      "test_id": "T1.17.4",
+      "name": "Verification of lib/presentation/ directory structure",
+      "status": "PASSED",
+      "duration_ms": 0.74,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F17",
+      "test_id": "T1.17.5",
+      "name": "Zero forbidden dependencies in domain layer",
+      "status": "PASSED",
+      "duration_ms": 0.68,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F18",
+      "test_id": "T1.18.1",
+      "name": "ConnectionBloc state transitions",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F18",
+      "test_id": "T1.18.2",
+      "name": "DashboardBloc emits DashboardLoaded on telemetry",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F18",
+      "test_id": "T1.18.3",
+      "name": "AlertBloc emits AlertReceived with critical flag",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F18",
+      "test_id": "T1.18.4",
+      "name": "ConfigBloc emits ConfigUpdated on parameter change",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F18",
+      "test_id": "T1.18.5",
+      "name": "WebrtcBloc handles connection lifecycle states",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F19",
+      "test_id": "T1.19.1",
+      "name": "Connection status badge rendering",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F19",
+      "test_id": "T1.19.2",
+      "name": "Battery level indicator card rendering",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F19",
+      "test_id": "T1.19.3",
+      "name": "Real-time ultrasonic distance card rendering",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F19",
+      "test_id": "T1.19.4",
+      "name": "System temperature and CPU load metric widgets",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F19",
+      "test_id": "T1.19.5",
+      "name": "Navigation shortcut buttons to Live Monitor and Settings",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F20",
+      "test_id": "T1.20.1",
+      "name": "Video view container layout 16:9",
+      "status": "PASSED",
+      "duration_ms": 0.43,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F20",
+      "test_id": "T1.20.2",
+      "name": "Sensor telemetry HUD overlay on top of video",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F20",
+      "test_id": "T1.20.3",
+      "name": "Push-to-Talk button position and accessibility",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F20",
+      "test_id": "T1.20.4",
+      "name": "Fullscreen toggle or landscape orientation handling",
+      "status": "PASSED",
+      "duration_ms": 0.24,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F20",
+      "test_id": "T1.20.5",
+      "name": "Audio track mute toggle button",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F21",
+      "test_id": "T1.21.1",
+      "name": "Distance threshold slider configuration (20-200cm)",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F21",
+      "test_id": "T1.21.2",
+      "name": "Speaker volume slider configuration (0-100%)",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F21",
+      "test_id": "T1.21.3",
+      "name": "Device reboot confirmation dialog and action trigger",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F21",
+      "test_id": "T1.21.4",
+      "name": "Device buzzer trigger button",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F21",
+      "test_id": "T1.21.5",
+      "name": "MQTT broker host and device ID configuration fields",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F22",
+      "test_id": "T1.22.1",
+      "name": "Alert log list view rendering",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F22",
+      "test_id": "T1.22.2",
+      "name": "Severity badge formatting (Critical: red, Warning: orange)",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F22",
+      "test_id": "T1.22.3",
+      "name": "Formatted timestamp display (HH:mm:ss dd/MM)",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F22",
+      "test_id": "T1.22.4",
+      "name": "Detected objects tag list chips display",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 1,
+      "feature_id": "F22",
+      "test_id": "T1.22.5",
+      "name": "Empty state display when no alerts have occurred",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F1",
+      "test_id": "T2.1.1",
+      "name": "Negative distance values sensor error handling",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F1",
+      "test_id": "T2.1.2",
+      "name": "Boundary battery levels 0% and 100%",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F1",
+      "test_id": "T2.1.3",
+      "name": "Extreme CPU temperatures sub-zero and 95\u00b0C",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F1",
+      "test_id": "T2.1.4",
+      "name": "Max ultrasonic distance upper limit > 500cm",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F1",
+      "test_id": "T2.1.5",
+      "name": "Clock skew and out-of-order timestamp handling",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F2",
+      "test_id": "T2.2.1",
+      "name": "Missing optional fields in telemetry JSON payload",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F2",
+      "test_id": "T2.2.2",
+      "name": "Malformed JSON syntax without crash",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F2",
+      "test_id": "T2.2.3",
+      "name": "Rapid telemetry flood throttling handling",
+      "status": "PASSED",
+      "duration_ms": 0.16,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F2",
+      "test_id": "T2.2.4",
+      "name": "Unicode device IDs and special characters",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F2",
+      "test_id": "T2.2.5",
+      "name": "Type mismatch graceful fallback",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F3",
+      "test_id": "T2.3.1",
+      "name": "Distance exactly at threshold boundary",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F3",
+      "test_id": "T2.3.2",
+      "name": "Empty detected objects list handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F3",
+      "test_id": "T2.3.3",
+      "name": "Large detected objects list 50+ objects",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F3",
+      "test_id": "T2.3.4",
+      "name": "Extremely long localized warning message string",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F3",
+      "test_id": "T2.3.5",
+      "name": "Rapid consecutive hazard alerts burst",
+      "status": "PASSED",
+      "duration_ms": 0.06,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F4",
+      "test_id": "T2.4.1",
+      "name": "Notification trigger when app in background",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F4",
+      "test_id": "T2.4.2",
+      "name": "Notification trigger when app terminated",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F4",
+      "test_id": "T2.4.3",
+      "name": "Do-Not-Disturb mode critical alert bypass",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F4",
+      "test_id": "T2.4.4",
+      "name": "Notification permission denied fallback in-app alert",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F4",
+      "test_id": "T2.4.5",
+      "name": "Multiple simultaneous alerts collapsing into group",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F5",
+      "test_id": "T2.5.1",
+      "name": "Distance threshold set to lower extreme 1cm",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F5",
+      "test_id": "T2.5.2",
+      "name": "Distance threshold set to upper extreme 1000cm",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F5",
+      "test_id": "T2.5.3",
+      "name": "Volume set to 0% absolute mute",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F5",
+      "test_id": "T2.5.4",
+      "name": "Volume set to 100% maximum gain",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F5",
+      "test_id": "T2.5.5",
+      "name": "Non-numeric values in config JSON handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F6",
+      "test_id": "T2.6.1",
+      "name": "Unknown command string handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F6",
+      "test_id": "T2.6.2",
+      "name": "Empty command string handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F6",
+      "test_id": "T2.6.3",
+      "name": "Command payload with extra unexpected keys",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F6",
+      "test_id": "T2.6.4",
+      "name": "Rapid repeated reboot command bursts",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F6",
+      "test_id": "T2.6.5",
+      "name": "Command dispatched while device is offline rejection",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F7",
+      "test_id": "T2.7.1",
+      "name": "Network disconnect without TCP FIN triggers LWT",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F7",
+      "test_id": "T2.7.2",
+      "name": "Broker failover handling",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F7",
+      "test_id": "T2.7.3",
+      "name": "Rapid reconnect cycling",
+      "status": "PASSED",
+      "duration_ms": 1.56,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F7",
+      "test_id": "T2.7.4",
+      "name": "Retained status message overwrite validation",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F7",
+      "test_id": "T2.7.5",
+      "name": "Unrecognized status enum fallback",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F8",
+      "test_id": "T2.8.1",
+      "name": "Truncated SDP offer string handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F8",
+      "test_id": "T2.8.2",
+      "name": "SDP offer with audio only",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F8",
+      "test_id": "T2.8.3",
+      "name": "SDP offer with video only",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F8",
+      "test_id": "T2.8.4",
+      "name": "Multiple simultaneous SDP offers from competing callers",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F8",
+      "test_id": "T2.8.5",
+      "name": "Re-negotiation SDP offer while previous active",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F9",
+      "test_id": "T2.9.1",
+      "name": "SDP answer timeout handling",
+      "status": "PASSED",
+      "duration_ms": 60.84,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F9",
+      "test_id": "T2.9.2",
+      "name": "Mismatched codec capabilities negotiation",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F9",
+      "test_id": "T2.9.3",
+      "name": "Malformed SDP answer string validation",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F9",
+      "test_id": "T2.9.4",
+      "name": "Duplicate SDP answer packets deduplication",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F9",
+      "test_id": "T2.9.5",
+      "name": "Answer received after local peer cancelled connection",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F10",
+      "test_id": "T2.10.1",
+      "name": "Null candidate end-of-candidates indicator",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F10",
+      "test_id": "T2.10.2",
+      "name": "Invalid candidate string format rejection",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F10",
+      "test_id": "T2.10.3",
+      "name": "Mismatched sdpMid or out-of-bounds mLineIndex",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F10",
+      "test_id": "T2.10.4",
+      "name": "ICE candidate arriving before remote description",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F10",
+      "test_id": "T2.10.5",
+      "name": "STUN server unreachable fallback to host candidates",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F11",
+      "test_id": "T2.11.1",
+      "name": "Sudden 20% network packet loss resilience",
+      "status": "PASSED",
+      "duration_ms": 0.15,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F11",
+      "test_id": "T2.11.2",
+      "name": "Video stream renegotiation upon resolution switch",
+      "status": "PASSED",
+      "duration_ms": 1.4,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F11",
+      "test_id": "T2.11.3",
+      "name": "High jitter packet arrival handling",
+      "status": "PASSED",
+      "duration_ms": 0.35,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F11",
+      "test_id": "T2.11.4",
+      "name": "Zero-bandwidth or paused video track handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F11",
+      "test_id": "T2.11.5",
+      "name": "WebRTC connection state transitioning to failed",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F12",
+      "test_id": "T2.12.1",
+      "name": "Micro-tap on PTT button <50ms hold time",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F12",
+      "test_id": "T2.12.2",
+      "name": "Extended PTT hold time >60s auto cutoff",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F12",
+      "test_id": "T2.12.3",
+      "name": "Microphone permission denied by user handling",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F12",
+      "test_id": "T2.12.4",
+      "name": "Incoming phone call interrupting active PTT recording",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F12",
+      "test_id": "T2.12.5",
+      "name": "Zero audio input levels complete silence transmission",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F13",
+      "test_id": "T2.13.1",
+      "name": "Sudden drop in distance from 250cm to 10cm",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F13",
+      "test_id": "T2.13.2",
+      "name": "Battery drain to exact 0% shutdown trigger",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F13",
+      "test_id": "T2.13.3",
+      "name": "CPU temperature exceeding 85\u00b0C threshold alert",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F13",
+      "test_id": "T2.13.4",
+      "name": "Rapid oscillation around threshold",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F13",
+      "test_id": "T2.13.5",
+      "name": "Null/NaN values in sensor simulation protection",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F14",
+      "test_id": "T2.14.1",
+      "name": "Hotkey pressed while previous hazard alert active",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F14",
+      "test_id": "T2.14.2",
+      "name": "Rapid key spamming rate limit protection",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F14",
+      "test_id": "T2.14.3",
+      "name": "Non-alphanumeric hotkey bindings and modifiers",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F14",
+      "test_id": "T2.14.4",
+      "name": "Hotkey event when terminal window unfocused",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F14",
+      "test_id": "T2.14.5",
+      "name": "Hotkey triggered during active WebRTC streaming",
+      "status": "PASSED",
+      "duration_ms": 0.3,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F15",
+      "test_id": "T2.15.1",
+      "name": "Webcam device disconnect fallback to synthetic",
+      "status": "PASSED",
+      "duration_ms": 0.57,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F15",
+      "test_id": "T2.15.2",
+      "name": "Incompatible resolution request fallback",
+      "status": "PASSED",
+      "duration_ms": 8.44,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F15",
+      "test_id": "T2.15.3",
+      "name": "Extremely high synthetic HUD FPS capped to 30",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F15",
+      "test_id": "T2.15.4",
+      "name": "Synthetic generator under heavy CPU load frame drops",
+      "status": "PASSED",
+      "duration_ms": 0.1,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F15",
+      "test_id": "T2.15.5",
+      "name": "Corrupted frame buffer handling",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F16",
+      "test_id": "T2.16.1",
+      "name": "Audio packet stream buffer overrun handling",
+      "status": "PASSED",
+      "duration_ms": 0.29,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F16",
+      "test_id": "T2.16.2",
+      "name": "Audio packet stream buffer underrun",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F16",
+      "test_id": "T2.16.3",
+      "name": "Unsupported audio codec packet rejection",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F16",
+      "test_id": "T2.16.4",
+      "name": "System audio output device missing virtual sink fallback",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F16",
+      "test_id": "T2.16.5",
+      "name": "Volume set to 0 with high amplitude audio",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F17",
+      "test_id": "T2.17.1",
+      "name": "Circular dependency scan across project files",
+      "status": "PASSED",
+      "duration_ms": 0.96,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F17",
+      "test_id": "T2.17.2",
+      "name": "Entity models have no framework dependencies",
+      "status": "PASSED",
+      "duration_ms": 0.85,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F17",
+      "test_id": "T2.17.3",
+      "name": "Repository interface contract compliance",
+      "status": "PASSED",
+      "duration_ms": 0.69,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F17",
+      "test_id": "T2.17.4",
+      "name": "Verification of analysis_options.yaml",
+      "status": "PASSED",
+      "duration_ms": 0.66,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F17",
+      "test_id": "T2.17.5",
+      "name": "Code layout compliance with PROJECT.md",
+      "status": "PASSED",
+      "duration_ms": 0.63,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F18",
+      "test_id": "T2.18.1",
+      "name": "Bloc close called while events pending",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F18",
+      "test_id": "T2.18.2",
+      "name": "Duplicate event dispatch deduplication",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F18",
+      "test_id": "T2.18.3",
+      "name": "Exception thrown in event handler caught safely",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F18",
+      "test_id": "T2.18.4",
+      "name": "Cross-Bloc event subscription leak prevention",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F18",
+      "test_id": "T2.18.5",
+      "name": "App lifecycle background/foreground Bloc state preservation",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F19",
+      "test_id": "T2.19.1",
+      "name": "Screen orientation change portrait to landscape",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F19",
+      "test_id": "T2.19.2",
+      "name": "Small screen display scaling 320px width",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F19",
+      "test_id": "T2.19.3",
+      "name": "Accessibility 200% font scaling",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F19",
+      "test_id": "T2.19.4",
+      "name": "Rapid navigation cycling away and back",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F19",
+      "test_id": "T2.19.5",
+      "name": "Dark mode and light mode theme switching",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F20",
+      "test_id": "T2.20.1",
+      "name": "Screen lock during live streaming",
+      "status": "PASSED",
+      "duration_ms": 0.51,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F20",
+      "test_id": "T2.20.2",
+      "name": "Video stream disconnect on Live Monitor screen",
+      "status": "PASSED",
+      "duration_ms": 0.51,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F20",
+      "test_id": "T2.20.3",
+      "name": "Rapid entering and exiting Live Monitor screen",
+      "status": "PASSED",
+      "duration_ms": 0.11,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F20",
+      "test_id": "T2.20.4",
+      "name": "PTT button dragged off target before release",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F20",
+      "test_id": "T2.20.5",
+      "name": "Audio feedback loop prevention when speaker volume high",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F21",
+      "test_id": "T2.21.1",
+      "name": "Sliders adjusted rapidly with debouncing",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F21",
+      "test_id": "T2.21.2",
+      "name": "Settings saved while network offline queued",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F21",
+      "test_id": "T2.21.3",
+      "name": "Reset to factory defaults behavior",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F21",
+      "test_id": "T2.21.4",
+      "name": "Invalid MQTT broker IP/port format rejection",
+      "status": "PASSED",
+      "duration_ms": 0.24,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F21",
+      "test_id": "T2.21.5",
+      "name": "Reboot command cancelled at confirmation dialog",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F22",
+      "test_id": "T2.22.1",
+      "name": "Large alert history log 1000+ entries scrolling",
+      "status": "PASSED",
+      "duration_ms": 0.07,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F22",
+      "test_id": "T2.22.2",
+      "name": "Pull-to-refresh on alert history list",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F22",
+      "test_id": "T2.22.3",
+      "name": "Clear alert history action",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F22",
+      "test_id": "T2.22.4",
+      "name": "Alert item click opens detail modal dialog",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 2,
+      "feature_id": "F22",
+      "test_id": "T2.22.5",
+      "name": "Concurrent new alert arrival while browsing history",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F1+F3",
+      "test_id": "T3.1",
+      "name": "Telemetry interrupted by emergency hazard alert",
+      "status": "PASSED",
+      "duration_ms": 0.05,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F2+F4",
+      "test_id": "T3.2",
+      "name": "Telemetry dashboard updating while critical alert triggers heads-up",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F3+F5",
+      "test_id": "T3.3",
+      "name": "Threshold change 80cm->120cm causes 100cm obstacle to trigger critical alert",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F5+F16",
+      "test_id": "T3.4",
+      "name": "Volume slider adjustment modifies audio sink gain",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F6+F7",
+      "test_id": "T3.5",
+      "name": "Reboot command triggers shutdown and LWT offline",
+      "status": "PASSED",
+      "duration_ms": 0.04,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F8+F9+F10",
+      "test_id": "T3.6",
+      "name": "Complete WebRTC signaling loop offer, answer, and ice candidates",
+      "status": "PASSED",
+      "duration_ms": 0.04,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F11+F12",
+      "test_id": "T3.7",
+      "name": "Full-duplex video streaming and PTT audio playback",
+      "status": "PASSED",
+      "duration_ms": 0.47,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F11+F20",
+      "test_id": "T3.8",
+      "name": "Live monitor video feed overlaid with real-time telemetry HUD",
+      "status": "PASSED",
+      "duration_ms": 0.51,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F3+F22",
+      "test_id": "T3.9",
+      "name": "Emergency hazard alert saved and rendered in alert history log",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F14+F4",
+      "test_id": "T3.10",
+      "name": "Mock Pi hotkey generates hazard and triggers heads-up alert",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F15+F11",
+      "test_id": "T3.11",
+      "name": "Synthetic radar HUD animation synchronized with distance telemetry",
+      "status": "PASSED",
+      "duration_ms": 0.57,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F7+F19",
+      "test_id": "T3.12",
+      "name": "Mock Pi crash triggers LWT turning dashboard badge red Disconnected",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F18+F3",
+      "test_id": "T3.13",
+      "name": "AlertBloc receives alert and triggers NotificationService asynchronously",
+      "status": "PASSED",
+      "duration_ms": 0.03,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F5+F1",
+      "test_id": "T3.14",
+      "name": "Updating config changes cadence parameters on Mock Pi",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F6+F21",
+      "test_id": "T3.15",
+      "name": "Settings reboot button sends MQTT command and resets state",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F12+F20",
+      "test_id": "T3.16",
+      "name": "Pressing PTT button on Live Monitor streams mic audio to Pi",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F13+F1",
+      "test_id": "T3.17",
+      "name": "Simulated sensor fluctuations reflected in published telemetry",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F17+F18",
+      "test_id": "T3.18",
+      "name": "Clean Architecture repository streams data to BLoC without leaks",
+      "status": "PASSED",
+      "duration_ms": 0.76,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F4+F22",
+      "test_id": "T3.19",
+      "name": "Tapping heads-up notification deep-links to Alert History screen",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F10+F11",
+      "test_id": "T3.20",
+      "name": "ICE candidate re-gathering maintains video stream continuity",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F2+F21",
+      "test_id": "T3.21",
+      "name": "Updating device ID in Settings switches subscription topic",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F16+F6",
+      "test_id": "T3.22",
+      "name": "Sending MUTE command silences audio playback on Mock Pi",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F3+F20",
+      "test_id": "T3.23",
+      "name": "Critical obstacle alert flashes danger border on Live Monitor screen",
+      "status": "PASSED",
+      "duration_ms": 0.0,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 3,
+      "feature_id": "F7+F8",
+      "test_id": "T3.24",
+      "name": "WebRTC offer while device offline handles timeout gracefully",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_1",
+      "name": "Cold-boot surveillance cycle with WebRTC negotiation and audio streaming",
+      "status": "PASSED",
+      "duration_ms": 0.58,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_2",
+      "name": "Sudden obstacle danger alert notification and PTT voice warning",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_3",
+      "name": "Dynamic parameter tuning in high noise environment",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_4",
+      "name": "Network disruption and automatic client reconnect cycle",
+      "status": "PASSED",
+      "duration_ms": 10.23,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_5",
+      "name": "Battery depletion to 0% and power-off LWT supervision",
+      "status": "PASSED",
+      "duration_ms": 0.04,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_6",
+      "name": "Manual hotkey hazard injection and chronological recording",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_7",
+      "name": "Remote service restart command and sensor normalization",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_8",
+      "name": "Multi-subscriber synchronization for family members",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_9",
+      "name": "Push-to-Talk 5-turn voice intercom without audio clipping",
+      "status": "PASSED",
+      "duration_ms": 0.01,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_10",
+      "name": "Continuous 100-cycle telemetry burst stability without packet loss",
+      "status": "PASSED",
+      "duration_ms": 0.31,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_11",
+      "name": "Emergency alert flood 10 bursts handled with exact sequencing",
+      "status": "PASSED",
+      "duration_ms": 0.04,
+      "error_message": null,
+      "details": {}
+    },
+    {
+      "tier": 4,
+      "feature_id": "Scenario",
+      "test_id": "Scenario_12",
+      "name": "Graceful degradation without WebRTC hardware with full telemetry active",
+      "status": "PASSED",
+      "duration_ms": 0.02,
+      "error_message": null,
+      "details": {}
+    }
+  ]
+}
