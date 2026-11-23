@@ -285,6 +285,13 @@ TelemetryEntity createTestTelemetry({
 	double ultrasonicDistanceCm = 145.2,
 	bool cameraActive = true,
 	int speakerVolume = 80,
+	double? latitude = 16.0738,
+	double? longitude = 108.1499,
+	double? speedKmh = 3.5,
+	double? headingDegrees = 135.0,
+	bool hasGpsFix = true,
+	int? satellites = 8,
+	double? altitudeM = 14.2,
 }) {
 	return TelemetryEntity(
 		deviceId: deviceId,
@@ -295,6 +302,13 @@ TelemetryEntity createTestTelemetry({
 		ultrasonicDistanceCm: ultrasonicDistanceCm,
 		cameraActive: cameraActive,
 		speakerVolume: speakerVolume,
+		latitude: latitude,
+		longitude: longitude,
+		speedKmh: speedKmh,
+		headingDegrees: headingDegrees,
+		hasGpsFix: hasGpsFix,
+		satellites: satellites,
+		altitudeM: altitudeM,
 	);
 }
 

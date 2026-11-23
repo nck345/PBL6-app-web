@@ -66,6 +66,8 @@ python tools/mock_pi/mock_pi_server.py --device-id pi4_test_01 --broker broker.e
 | `--camera-index` | `0` | Chỉ số webcam vật lý của máy tính. |
 | `--synthetic` | `False` | Ép buộc sử dụng radar HUD đồ họa thay vì mở webcam vật lý. |
 | `--headless` | `False` | Tắt vòng lặp đọc lệnh từ console terminal. |
+| `--sensor-disconnected` | `False` | Khởi động với trạng thái cảm biến khoảng cách chưa cắm (-1.0 cm). |
+| `--no-gps` | `False` | Khởi động với trạng thái mất tín hiệu GPS (has_gps_fix=false). |
 | `--interval` | `3.0` | Chu kỳ phát bản tin telemetry tính theo giây. |
 
 ---
@@ -78,6 +80,9 @@ Khi chạy không kèm cờ `--headless`, người dùng có thể nhập trực
 |---|---|
 | `a` hoặc `alert` | Kích hoạt ngay lập tức một bản tin cảnh báo nguy hiểm tới topic alert. |
 | `d <cm>` | Cố định khoảng cách siêu âm mô phỏng, ví dụ `d 25` để kích hoạt cảnh báo nguy hiểm, `d 160` để an toàn, hoặc `d -1` để giả lập mất cảm biến. |
+| `sensor on/off` | Bật hoặc tắt trạng thái kết nối cảm biến khoảng cách (tắt sẽ gửi khoảng cách -1.0 cm). |
+| `gps <lat> <lon>` | Cố định tọa độ GPS mô phỏng (ví dụ `gps 16.073800 108.149900`). |
+| `gps on/off` | Bật hoặc tắt trạng thái có tín hiệu định vị vệ tinh GPS (has_gps_fix). |
 | `b <pct>` | Cố định phần trăm pin mô phỏng, ví dụ `b 15` để kiểm thử cảnh báo pin yếu. |
 | `t <c>` | Cố định nhiệt độ CPU mô phỏng, ví dụ `t 62.5`. |
 | `reboot` | Giả lập quá trình khởi động lại thiết bị: chuyển offline 3 giây rồi online trở lại. |
@@ -118,7 +123,14 @@ Khi mock server mất kết nối đột ngột, broker tự động phát bản
   "cpu_usage": 32.0,
   "ultrasonic_distance_cm": 145.2,
   "camera_active": true,
-  "speaker_volume": 80
+  "speaker_volume": 80,
+  "latitude": 16.073800,
+  "longitude": 108.149900,
+  "speed_kmh": 3.6,
+  "heading_degrees": 135.0,
+  "has_gps_fix": true,
+  "satellites": 8,
+  "altitude_m": 14.2
 }
 ```
 

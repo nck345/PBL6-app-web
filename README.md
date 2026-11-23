@@ -54,6 +54,9 @@ pip install -r tools/mock_pi/requirements.txt
 ### 3. Điều khiển số liệu mô phỏng qua Console
 Khi chạy ở chế độ tương tác (không có `--headless`), bạn có thể nhập trực tiếp các lệnh sau vào terminal:
 - `d <cm>`: Đổi khoảng cách cảm biến siêu âm (ví dụ: `d 25` để kiểm thử cảnh báo nguy hiểm, `d 150` để kiểm thử vùng an toàn, `d -1` để giả lập mất cảm biến).
+- `sensor on/off`: Bật hoặc ngắt kết nối cảm biến khoảng cách (tắt sẽ gửi khoảng cách -1.0 cm).
+- `gps <lat> <lon>`: Đổi tọa độ GPS mô phỏng (ví dụ: `gps 16.073800 108.149900`).
+- `gps on/off`: Bật hoặc tắt trạng thái có tín hiệu định vị vệ tinh GPS (has_gps_fix).
 - `b <pct>`: Đổi phần trăm pin (ví dụ: `b 15` để kiểm thử cảnh báo pin yếu).
 - `t <c>`: Đổi nhiệt độ CPU (ví dụ: `t 75` để kiểm thử cảnh báo quá nhiệt).
 - `a`: Bắn ngay lập tức một bản tin cảnh báo khẩn cấp tới ứng dụng.

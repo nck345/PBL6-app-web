@@ -28,9 +28,11 @@ class WebrtcDatasource {
 			try {
 				await mqttDatasource.connectionStatusStream
 					.firstWhere((s) => s.toLowerCase() == 'connected')
-					.timeout(const Duration(seconds: 5));
+					.timeout(const Duration(seconds: 15));
 			} catch (_) {
-				throw StateError('MQTT datasource is not connected');
+				if (!mqttDatasource.isConnected) {
+					throw StateError('MQTT datasource is not connected');
+				}
 			}
 		}
 		await disconnect();

@@ -246,5 +246,37 @@ void main() {
 			expect(find.text('Thiết bị Pi 4'), findsOneWidget);
 			expect(find.text('9999.0'), findsOneWidget);
 		});
+
+		testWidgets('W-DASH-16: Displays GPS card with coordinates and Google Maps button when GPS fix active', (tester) async {
+			final tel = createTestTelemetry(
+				latitude: 16.0738,
+				longitude: 108.1499,
+				hasGpsFix: true,
+				satellites: 8,
+				speedKmh: 4.2,
+			);
+			dashBloc.emit(DashboardLoaded(telemetry: tel));
+			await tester.pumpWidget(createScreen());
+
+			expect(find.text('Vị trí & Định vị GPS'), findsOneWidget);
+			expect(find.text('Đã định vị (8 vệ tinh)'), findsOneWidget);
+			expect(find.text('16.073800°, 108.149900°'), findsOneWidget);
+			expect(find.text('4.2 km/h'), findsOneWidget);
+			expect(find.text('Mở trên Google Maps'), findsOneWidget);
+		});
+
+		testWidgets('W-DASH-17: Displays missing GPS signal badge when hasGpsFix is false', (tester) async {
+			final tel = createTestTelemetry(
+				hasGpsFix: false,
+				latitude: null,
+				longitude: null,
+			);
+			dashBloc.emit(DashboardLoaded(telemetry: tel));
+			await tester.pumpWidget(createScreen());
+
+			expect(find.text('Vị trí & Định vị GPS'), findsOneWidget);
+			expect(find.text('Chưa có tín hiệu GPS'), findsWidgets);
+			expect(find.text('Mở trên Google Maps'), findsNothing);
+		});
 	});
 }

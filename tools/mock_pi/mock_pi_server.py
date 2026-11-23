@@ -3,8 +3,8 @@ import cv2,numpy as np,av,sounddevice as sd
 import paho.mqtt.client as mqtt
 from aiortc import RTCPeerConnection,RTCConfiguration,RTCIceServer,RTCSessionDescription,VideoStreamTrack
 from aiortc.sdp import candidate_from_sdp
-Dev_cfg={"dev_id":"pi4_01","brk_url":"broker.emqx.io","brk_prt":1883,"cam_idx":0,"syn_mod":False,"hed_mod":False,"dist_lim":80.0,"spk_vol":80,"alt_frq":2000,"fps_num":15,"man_dst":False,"prev_vol":80}
-Sen_dat={"bat_pct":85.0,"temp_c":48.5,"cpu_pct":32.0,"dist_cm":145.2,"cam_on":False,"alt_on":False,"last_alt":0.0}
+Dev_cfg={"dev_id":"pi4_01","brk_url":"broker.emqx.io","brk_prt":1883,"cam_idx":0,"syn_mod":False,"hed_mod":False,"dist_lim":80.0,"spk_vol":80,"alt_frq":2000,"fps_num":15,"man_dst":False,"prev_vol":80,"tel_int":3.0}
+Sen_dat={"bat_pct":85.0,"temp_c":48.5,"cpu_pct":32.0,"dist_cm":145.2,"cam_on":False,"alt_on":False,"last_alt":0.0,"lat":16.073800,"lon":108.149900,"spd":3.6,"hdg":135.0,"gps_fix":True,"sat":8,"alt":14.2}
 Cli_mq=None
 Pc_set=set()
 Ice_buf=[]
@@ -369,6 +369,12 @@ async def tel_lop(interval=3.0):
 		Sen_dat["cpu_pct"]=round(min(98.0,base_cpu),1)
 		if not Dev_cfg["man_dst"]:
 			Sen_dat["dist_cm"]=round(max(20.0,min(280.0,Sen_dat["dist_cm"]+random.uniform(-4.0,4.0))),1)
+		if Sen_dat["gps_fix"]:
+			Sen_dat["lat"]=round(Sen_dat["lat"]+random.uniform(-0.00003,0.00003),6)
+			Sen_dat["lon"]=round(Sen_dat["lon"]+random.uniform(-0.00003,0.00003),6)
+			Sen_dat["spd"]=round(max(1.5,min(6.0,Sen_dat["spd"]+random.uniform(-0.2,0.2))),1)
+			Sen_dat["hdg"]=round((Sen_dat["hdg"]+random.uniform(-5.0,5.0))%360.0,1)
+			Sen_dat["alt"]=round(max(10.0,min(20.0,Sen_dat["alt"]+random.uniform(-0.1,0.1))),1)
 		tel_obj={
 			"device_id":Dev_cfg["dev_id"],
 			"timestamp":now_ts,
@@ -377,7 +383,14 @@ async def tel_lop(interval=3.0):
 			"cpu_usage":Sen_dat["cpu_pct"],
 			"ultrasonic_distance_cm":Sen_dat["dist_cm"],
 			"camera_active":bool(Sen_dat["cam_on"]),
-			"speaker_volume":int(Dev_cfg["spk_vol"])
+			"speaker_volume":int(Dev_cfg["spk_vol"]),
+			"latitude":Sen_dat["lat"] if Sen_dat["gps_fix"] else None,
+			"longitude":Sen_dat["lon"] if Sen_dat["gps_fix"] else None,
+			"speed_kmh":Sen_dat["spd"] if Sen_dat["gps_fix"] else 0.0,
+			"heading_degrees":Sen_dat["hdg"] if Sen_dat["gps_fix"] else 0.0,
+			"has_gps_fix":bool(Sen_dat["gps_fix"]),
+			"satellites":Sen_dat["sat"] if Sen_dat["gps_fix"] else 0,
+			"altitude_m":Sen_dat["alt"] if Sen_dat["gps_fix"] else 0.0
 		}
 		Cli_mq.publish(f"pbl6/{Dev_cfg['dev_id']}/telemetry",json.dumps(tel_obj),qos=0)
 		chk_alt()
@@ -408,6 +421,34 @@ async def cli_lop():
 					chk_alt()
 				except ValueError:
 					print("Invalid distance parameter. Use: d <cm>")
+			elif cmd_op=="sensor" and len(tok_lst)>1:
+				if tok_lst[1].lower() in ("off","0","disconnect"):
+					Dev_cfg["man_dst"]=True
+					Sen_dat["dist_cm"]=-1.0
+					log_inf("Ultrasonic sensor simulated as disconnected (-1.0 cm)")
+				elif tok_lst[1].lower() in ("on","1","connect"):
+					Dev_cfg["man_dst"]=False
+					Sen_dat["dist_cm"]=145.2
+					log_inf("Ultrasonic sensor simulated as connected")
+				else:
+					print("Use: sensor on | sensor off")
+			elif cmd_op=="gps":
+				if len(tok_lst)>=3:
+					try:
+						Sen_dat["lat"]=float(tok_lst[1])
+						Sen_dat["lon"]=float(tok_lst[2])
+						Sen_dat["gps_fix"]=True
+						log_inf(f"Manual GPS position set to {Sen_dat['lat']:.6f}, {Sen_dat['lon']:.6f}")
+					except ValueError:
+						print("Invalid coordinates. Use: gps <lat> <lon>")
+				elif len(tok_lst)==2 and tok_lst[1].lower() in ("off","0","false"):
+					Sen_dat["gps_fix"]=False
+					log_inf("GPS fix simulated as lost/OFF")
+				elif len(tok_lst)==2 and tok_lst[1].lower() in ("on","1","true"):
+					Sen_dat["gps_fix"]=True
+					log_inf("GPS fix simulated as restored/ON")
+				else:
+					print("Use: gps <lat> <lon> | gps on | gps off")
 			elif cmd_op=="b" and len(tok_lst)>1:
 				try:
 					val_bat=float(tok_lst[1])
@@ -429,9 +470,9 @@ async def cli_lop():
 			elif cmd_op=="unmute":
 				asyncio.create_task(hdl_cmd(json.dumps({"command":"UNMUTE"})))
 			elif cmd_op=="status":
-				print(f"Device: {Dev_cfg['dev_id']} | Dist: {Sen_dat['dist_cm']}cm | Bat: {Sen_dat['bat_pct']}% | Tmp: {Sen_dat['temp_c']}C | Cam: {Sen_dat['cam_on']} | Vol: {Dev_cfg['spk_vol']}")
+				print(f"Device: {Dev_cfg['dev_id']} | Dist: {Sen_dat['dist_cm']}cm | GPS: {Sen_dat['lat']},{Sen_dat['lon']} (fix={Sen_dat['gps_fix']}) | Bat: {Sen_dat['bat_pct']}% | Tmp: {Sen_dat['temp_c']}C | Cam: {Sen_dat['cam_on']} | Vol: {Dev_cfg['spk_vol']}")
 			elif cmd_op in ("h","help"):
-				print("Available commands:\n  a            Trigger instant hazard alert\n  d <cm>       Set ultrasonic distance in cm (e.g. d 25)\n  b <pct>      Set battery percentage (e.g. b 90)\n  t <c>        Set temperature celsius (e.g. t 52)\n  reboot       Simulate hardware reboot\n  mute/unmute  Toggle speaker audio\n  status       Show current sensor readings\n  q            Exit mock server")
+				print("Available commands:\n  a            Trigger instant hazard alert\n  d <cm>       Set ultrasonic distance in cm (d -1 for disconnected)\n  sensor on/off Toggle sensor connected state\n  gps <lat> <lon> Set GPS coordinates\n  gps on/off   Toggle GPS fix\n  b <pct>      Set battery percentage (e.g. b 90)\n  t <c>        Set temperature celsius (e.g. t 52)\n  reboot       Simulate hardware reboot\n  mute/unmute  Toggle speaker audio\n  status       Show current sensor readings\n  q            Exit mock server")
 			else:
 				print(f"Unknown command: '{cmd_lin}'. Type 'h' for help.")
 		except Exception as err:
@@ -453,6 +494,8 @@ def parse_arg():
 	prs.add_argument("--camera-index",type=int,default=0,help="Webcam camera index (default: 0)")
 	prs.add_argument("--synthetic",action="store_true",help="Force synthetic radar HUD video feed")
 	prs.add_argument("--headless",action="store_true",help="Disable interactive console input")
+	prs.add_argument("--sensor-disconnected",action="store_true",help="Simulate disconnected ultrasonic sensor (-1.0 cm)")
+	prs.add_argument("--no-gps",action="store_true",help="Start without GPS fix")
 	prs.add_argument("--interval",type=float,default=3.0,help="Telemetry publication interval in seconds (default: 3.0)")
 	return prs.parse_args()
 async def run_srv():
@@ -515,6 +558,11 @@ def main():
 	Dev_cfg["syn_mod"]=arg_obj.synthetic
 	Dev_cfg["hed_mod"]=arg_obj.headless
 	Dev_cfg["tel_int"]=arg_obj.interval
+	if arg_obj.sensor_disconnected:
+		Dev_cfg["man_dst"]=True
+		Sen_dat["dist_cm"]=-1.0
+	if arg_obj.no_gps:
+		Sen_dat["gps_fix"]=False
 	try:
 		asyncio.run(run_srv())
 	except (KeyboardInterrupt,SystemExit):

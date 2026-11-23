@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide ConnectionState;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_constants.dart';
 import '../bloc/alerts/alert_bloc.dart';
 import '../bloc/connection/connection_bloc.dart';
@@ -219,6 +220,106 @@ class HomeDashboardScreen extends StatelessWidget {
 									],
 								),
 							),
+						),
+						const SizedBox(height: 16),
+						BlocBuilder<DashboardBloc, DashboardState>(
+							builder: (context, state) {
+								if (state is DashboardLoaded) {
+									final t = state.telemetry;
+									final hasGps = t.isGpsAvailable;
+									return Card(
+										shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+										elevation: 2,
+										child: Padding(
+											padding: const EdgeInsets.all(16),
+											child: Column(
+												crossAxisAlignment: CrossAxisAlignment.start,
+												children: [
+													Row(
+														children: [
+															Icon(
+																hasGps ? Icons.location_on : Icons.location_off,
+																color: hasGps ? Colors.redAccent : Colors.grey,
+															),
+															const SizedBox(width: 8),
+															const Expanded(
+																child: Text(
+																	'Vị trí & Định vị GPS',
+																	style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+																	maxLines: 1,
+																	overflow: TextOverflow.ellipsis,
+																),
+															),
+														],
+													),
+													const SizedBox(height: 8),
+													Container(
+														padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+														decoration: BoxDecoration(
+															color: hasGps ? Colors.green.shade50 : Colors.grey.shade100,
+															borderRadius: BorderRadius.circular(12),
+															border: Border.all(color: hasGps ? Colors.green.shade300 : Colors.grey.shade300),
+														),
+														child: Text(
+															hasGps
+																? 'Đã định vị (${t.satellites ?? 0} vệ tinh)'
+																: 'Chưa có tín hiệu GPS',
+															style: TextStyle(
+																fontSize: 12,
+																fontWeight: FontWeight.w600,
+																color: hasGps ? Colors.green.shade800 : Colors.grey.shade700,
+															),
+														),
+													),
+													const Divider(height: 20),
+													Column(
+														crossAxisAlignment: CrossAxisAlignment.start,
+														children: [
+															const Text('Tọa độ hiện tại', style: TextStyle(fontSize: 12, color: Colors.grey)),
+															const SizedBox(height: 2),
+															Text(
+																t.coordinatesDisplay,
+																style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+																maxLines: 1,
+																overflow: TextOverflow.ellipsis,
+															),
+															if (hasGps) ...[
+																const SizedBox(height: 8),
+																Row(
+																	children: [
+																		const Text('Tốc độ: ', style: TextStyle(fontSize: 12, color: Colors.grey)),
+																		Text(
+																			'${(t.speedKmh ?? 0.0).toStringAsFixed(1)} km/h',
+																			style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+																		),
+																	],
+																),
+															],
+														],
+													),
+													if (hasGps) ...[
+														const SizedBox(height: 12),
+														SizedBox(
+															width: double.infinity,
+															child: OutlinedButton.icon(
+																icon: const Icon(Icons.map_outlined, size: 18),
+																label: const Text('Mở trên Google Maps'),
+																onPressed: () async {
+																	final uri = Uri.parse('https://www.google.com/maps/search/?api=1&query=${t.latitude},${t.longitude}');
+																	if (await canLaunchUrl(uri)) {
+																		await launchUrl(uri, mode: LaunchMode.externalApplication);
+																	}
+																},
+															),
+														),
+													],
+												],
+											),
+										),
+									);
+								}
+								return const SizedBox.shrink();
+							},
 						),
 						const SizedBox(height: 16),
 						Card(

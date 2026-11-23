@@ -79,6 +79,48 @@ void main() {
       expect(model.ultrasonicDistanceCm, -1.0);
     });
 
+    test('fromJson and toJson handle GPS fields correctly', () {
+      final gpsJson = <String, dynamic>{
+        'device_id': 'pi4_01',
+        'timestamp': 1732312000,
+        'battery_percentage': 85,
+        'temperature_celsius': 48.5,
+        'cpu_usage': 32.0,
+        'ultrasonic_distance_cm': 145.2,
+        'camera_active': true,
+        'speaker_volume': 80,
+        'latitude': 16.0738,
+        'longitude': 108.1499,
+        'speed_kmh': 3.5,
+        'heading_degrees': 135.0,
+        'has_gps_fix': true,
+        'satellites': 8,
+        'altitude_m': 14.2,
+      };
+      final model = TelemetryModel.fromJson(gpsJson);
+      expect(model.latitude, 16.0738);
+      expect(model.longitude, 108.1499);
+      expect(model.speedKmh, 3.5);
+      expect(model.headingDegrees, 135.0);
+      expect(model.hasGpsFix, isTrue);
+      expect(model.satellites, 8);
+      expect(model.altitudeM, 14.2);
+      expect(model.isGpsAvailable, isTrue);
+      expect(model.coordinatesDisplay, '16.073800°, 108.149900°');
+
+      final roundtrip = TelemetryModel.fromJson(model.toJson());
+      expect(roundtrip, equals(model));
+    });
+
+    test('GPS defaults to unavailable when fields are absent or has_gps_fix is false', () {
+      final model = TelemetryModel.fromJson(rawJson);
+      expect(model.hasGpsFix, isFalse);
+      expect(model.latitude, isNull);
+      expect(model.longitude, isNull);
+      expect(model.isGpsAvailable, isFalse);
+      expect(model.coordinatesDisplay, 'Chưa có tín hiệu GPS');
+    });
+
     test('Helper getters correctly identify status', () {
       const nearModel = TelemetryModel(
         deviceId: 'pi4_01',
