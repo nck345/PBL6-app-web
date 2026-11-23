@@ -25,101 +25,91 @@ Hệ thống hoạt động theo mô hình Edge - Cloud - Mobile phân tán. Đi
 
 ## 2. Hướng dẫn thiết lập và kết nối Raspberry Pi
 
-### Phương án A: Chạy bộ giả lập Mock Pi trên máy tính
+### Phương án A: Giả lập phần cứng trên máy tính phát triển (Mock Simulator)
 
-Dự án tích hợp sẵn bộ giả lập phần cứng hoàn chỉnh tại [tools/mock_pi/mock_pi_server.py](file:///c:/Users/khiem_ssxdm6v/Documents/GitHub/PBL6-app-web/tools/mock_pi/mock_pi_server.py) phục vụ phát triển độc lập mà không cần mạch phần cứng thật.
+Phù hợp cho lập trình viên frontend muốn kiểm thử ứng dụng Flutter mà không cần bo mạch Raspberry Pi vật lý.
 
 1. **Cài đặt thư viện Python**:
    ```powershell
-   pip install -r tools/mock_pi/requirements.txt
+   cd tools/mock_pi
+   pip install -r requirements.txt
    ```
 
 2. **Khởi chạy Mock Pi Server**:
    - Sử dụng webcam máy tính:
      ```powershell
-     python tools/mock_pi/mock_pi_server.py
+     python mock_pi_server.py
      ```
    - Sử dụng radar HUD giả lập không cần webcam:
      ```powershell
-     python tools/mock_pi/mock_pi_server.py --synthetic
+     python mock_pi_server.py --synthetic
      ```
    - Tùy chỉnh mã thiết bị hoặc broker riêng:
      ```powershell
-     python tools/mock_pi/mock_pi_server.py --device-id pi4_01 --broker broker.emqx.io --port 1883
+     python mock_pi_server.py --device-id pi4_01 --broker broker.emqx.io --port 1883
      ```
 
-Khi khởi chạy, server sẽ phát dữ liệu cảm biến định kỳ và lắng nghe lệnh điều khiển hoặc yêu cầu xem video từ ứng dụng.
+Trong quá trình chạy, bạn có thể gõ các phím lệnh vào terminal (`d <cm>`, `b <pct>`, `t <c>`, `a`, `reboot`, `q`) để kiểm thử các trạng thái ứng dụng.
 
 ---
 
-### Phương án B: Cài đặt và kết nối trực tiếp với Raspberry Pi 4 thật
+### Phương án B: Cài đặt và vận hành trên Raspberry Pi 4 thật (Hardware Service)
+
+Dành riêng cho thiết bị Raspberry Pi 4 thật có gắn camera USB và cảm biến vật lý. Toàn bộ mã nguồn service phần cứng nằm độc lập tại thư mục `tools/pi_edge/`.
 
 #### 1. Đấu nối phần cứng
-- **Camera**: Kết nối Pi Camera qua cáp dẹt CSI hoặc cắm Webcam chuẩn USB vào cổng USB 3.0.
+- **Camera**: Cắm USB Webcam vào cổng USB 3.0 (hoặc USB 2.0) của Pi.
 - **Cảm biến khoảng cách siêu âm HC-SR04**:
   - `VCC`: Chân 5V (Pin 2 hoặc Pin 4).
   - `GND`: Chân GND (Pin 6).
-  - `TRIG`: Chân GPIO 23 (Pin 16).
-  - `ECHO`: Chân GPIO 24 (Pin 18) qua cầu phân áp trở (1kΩ và 2kΩ để hạ mức tín hiệu từ 5V xuống 3.3V an toàn cho chân Pi).
-- **Âm thanh**: Cắm tai nghe hoặc loa mini qua cổng 3.5mm hoặc cổng USB.
+  - `TRIG`: Chân GPIO 23 (Pin 16 vật lý).
+  - `ECHO`: Chân GPIO 24 (Pin 18 vật lý) qua cầu phân áp trở (1kΩ và 2kΩ để hạ mức tín hiệu từ 5V xuống 3.3V bảo vệ chân GPIO của Pi).
+- **Âm thanh**: Cắm loa mini hoặc tai nghe qua cổng 3.5mm hoặc cổng USB để nghe giọng nói đàm thoại 2 chiều.
 
-#### 2. Cài đặt môi trường trên Raspberry Pi OS
-Mở terminal trên Raspberry Pi và chạy các lệnh:
-```bash
-sudo apt update
-sudo apt install -y python3-pip python3-opencv libportaudio2 git
-pip3 install paho-mqtt aiortc sounddevice numpy av RPi.GPIO
-```
-
-#### 3. Chạy service kết nối trên Raspberry Pi
-Không cần sao chép toàn bộ mã nguồn Flutter. Bạn chỉ cần đưa thư mục `tools/` vào thư mục làm việc `/home/admin/Documents/pbl6/tools` trên Raspberry Pi (bằng lệnh SCP hoặc tải trực tiếp):
+#### 2. Sao chép và cài đặt trên Raspberry Pi
+Không cần sao chép toàn bộ dự án Flutter lên Pi. Bạn chỉ cần đưa thư mục `tools/pi_edge/` vào thư mục làm việc `/home/admin/Documents/pbl6/tools` trên Raspberry Pi:
 
 ```bash
 # Cách 1: Sao chép từ máy tính sang Pi qua SSH alias
-scp -r tools/mock_pi/* pbl6:/home/admin/Documents/pbl6/tools/
+scp -r tools/pi_edge/* pbl6:/home/admin/Documents/pbl6/tools/
 
 # Cách 2: Tải trực tiếp 2 file từ GitHub trên terminal của Pi
 mkdir -p /home/admin/Documents/pbl6/tools && cd /home/admin/Documents/pbl6/tools
-curl -O https://raw.githubusercontent.com/nck345/PBL6-app-web/main/tools/mock_pi/requirements.txt
-curl -O https://raw.githubusercontent.com/nck345/PBL6-app-web/main/tools/mock_pi/mock_pi_server.py
+curl -O https://raw.githubusercontent.com/nck345/PBL6-app-web/main/tools/pi_edge/requirements.txt
+curl -O https://raw.githubusercontent.com/nck345/PBL6-app-web/main/tools/pi_edge/pi_server.py
 ```
 
-Trên Raspberry Pi, chuyển vào thư mục `/home/admin/Documents/pbl6/tools` và khởi chạy service:
+#### 3. Khởi chạy service trên Raspberry Pi
+Trên Raspberry Pi, chuyển vào thư mục `/home/admin/Documents/pbl6/tools`:
 ```bash
 cd /home/admin/Documents/pbl6/tools
 
-# Chạy qua uv
-uv run mock_pi_server.py
+# Cài đặt thư viện nếu cần
+uv pip install -r requirements.txt
+
+# Khởi chạy service phần cứng
+uv run pi_server.py
 
 # Hoặc chạy trực tiếp qua môi trường ảo Python
-/home/admin/Documents/pbl6/.venv/bin/python3 mock_pi_server.py
+/home/admin/Documents/pbl6/.venv/bin/python3 pi_server.py
 ```
 
-Mã nguồn đã tích hợp cơ chế tự động dò tìm webcam USB qua chuẩn V4L2 (ưu tiên `/dev/video1`, `/dev/video0`) với định dạng MJPG 640x480 và bộ đệm 1 khung hình chống trễ. Đồng thời tích hợp driver cảm biến khoảng cách HC-SR04 trên chân GPIO 23 (Trigger) và GPIO 24 (Echo).
-
-Khi chưa cắm cảm biến khoảng cách, hệ thống tự động gán giá trị `-1.0` và hiển thị trạng thái "Chưa kết nối cảm biến" trên màn hình Dashboard và Camera POV mà không phát sinh cảnh báo giả. Nếu muốn bật chế độ giả lập số liệu ngẫu nhiên để thử nghiệm khi không có phần cứng:
-
-```bash
-# Bật giả lập số liệu khoảng cách khi chưa cắm cảm biến
-uv run mock_pi_server.py --mock-sensor
-
-# Chỉ định cổng camera USB cụ thể
-python3 mock_pi_server.py --camera-index 1
-
-# Ép buộc dùng radar HUD đồ họa khi không cắm webcam
-python3 mock_pi_server.py --synthetic
-```
+Service phần cứng sẽ tự động:
+- Đọc webcam USB thật qua chuẩn V4L2 (`/dev/video1`, `/dev/video0`). Nếu webcam chưa cắm hoặc đang bận do tiến trình AI chiếm dụng, service sẽ phát khung hình thông báo trạng thái mà không sinh hình ảnh radar giả.
+- Đọc cảm biến siêu âm HC-SR04 thật. Nếu chưa cắm cảm biến, telemetry trả về `-1.0` để app hiển thị "Chưa kết nối cảm biến" (`--`), không báo nguy hiểm giả.
+- Đo nhiệt độ CPU và tải CPU thực tế từ nhân Linux (`/sys/class/thermal/thermal_zone0/temp` và `/proc/stat`).
+- Phát âm thanh micro từ điện thoại ra loa ngoài của Pi.
 
 #### 4. Duy trì service chạy ngầm khi ngắt kết nối SSH
-Khi kết nối remote SSH qua Cloudflare Tunnel hoặc mạng ngoài, bạn nên cho service chạy ngầm để không bị tắt khi đóng cửa sổ terminal:
+Khi kết nối remote SSH qua Cloudflare Tunnel, bạn nên cho service chạy ngầm để không bị tắt khi đóng cửa sổ terminal:
 
 ```bash
 # Chạy ngầm bằng nohup tại thư mục /home/admin/Documents/pbl6/tools
 cd /home/admin/Documents/pbl6/tools
-nohup uv run mock_pi_server.py > pbl6.log 2>&1 &
+nohup uv run pi_server.py > pi_service.log 2>&1 &
 
 # Hoặc chạy trong phiên làm việc tmux
-tmux new -s pbl6 "cd /home/admin/Documents/pbl6/tools && uv run mock_pi_server.py"
+tmux new -s pbl6 "cd /home/admin/Documents/pbl6/tools && uv run pi_server.py"
 # Bấm Ctrl + B rồi bấm D để thoát ra ngoài mà tiến trình vẫn chạy
 ```
 

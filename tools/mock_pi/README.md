@@ -1,6 +1,10 @@
-# Raspberry Pi 4 Mock Server (PBL6 Assistive Monitor)
+# Raspberry Pi 4 Mock Simulator (Chạy giả lập trên máy tính)
 
-Bộ giả lập phần cứng Raspberry Pi 4 phục vụ phát triển và kiểm thử ứng dụng Flutter giám sát hỗ trợ người khiếm thị. Công cụ cung cấp luồng telemetry định kỳ, phát cảnh báo chướng ngại vật nguy hiểm, truyền luồng video WebRTC thời gian thực (webcam hoặc radar HUD giả lập) và nhận luồng âm thanh micro Push-to-Talk (PTT) từ điện thoại phát ra loa máy tính.
+Bộ giả lập phần cứng Raspberry Pi 4 chạy trên máy tính (PC / Laptop Windows / macOS / Linux) phục vụ phát triển và kiểm thử ứng dụng Flutter giám sát hỗ trợ người khiếm thị khi không có bo mạch Raspberry Pi vật lý.
+
+> **Lưu ý**: Nếu bạn đang triển khai trên **Raspberry Pi 4 thật**, vui lòng sử dụng gói dịch vụ phần cứng chính thức tại thư mục [tools/pi_edge/](../pi_edge/README.md) (`pi_server.py`).
+
+Công cụ mock simulator này cung cấp luồng telemetry mô phỏng, bảng điều khiển bàn phím tùy biến số liệu cảm biến (khoảng cách, pin, nhiệt độ), phát cảnh báo nguy hiểm thử nghiệm, truyền luồng video WebRTC (webcam laptop hoặc radar HUD đồ họa) và nhận luồng âm thanh micro Push-to-Talk (PTT).
 
 ---
 
