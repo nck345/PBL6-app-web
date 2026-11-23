@@ -129,25 +129,28 @@ class _LiveMonitorScreenState extends State<LiveMonitorScreen> {
 						child: BlocBuilder<DashboardBloc, DashboardState>(
 							builder: (context, state) {
 								if (state is DashboardLoaded) {
+									final isSensorConn = state.telemetry.isSensorConnected;
 									final dist = state.telemetry.ultrasonicDistanceCm;
-									final isDanger = dist < 60;
+									final isDanger = isSensorConn && dist < 60;
 									return Container(
 										padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
 										decoration: BoxDecoration(
-											color: isDanger ? Colors.red.withValues(alpha: 0.85) : Colors.black54,
+											color: !isSensorConn ? Colors.black54 : (isDanger ? Colors.red.withValues(alpha: 0.85) : Colors.black54),
 											borderRadius: BorderRadius.circular(20),
 										),
 										child: Row(
 											mainAxisSize: MainAxisSize.min,
 											children: [
 												Icon(
-													isDanger ? Icons.warning : Icons.radar,
+													!isSensorConn ? Icons.sensors_off : (isDanger ? Icons.warning : Icons.radar),
 													color: Colors.white,
 													size: 18,
 												),
 												const SizedBox(width: 8),
 												Text(
-													'Vật cản: ${dist.toStringAsFixed(1)} cm ${isDanger ? "- NGUY HIỂM" : ""}',
+													!isSensorConn
+														? 'Cảm biến khoảng cách: Chưa kết nối'
+														: 'Vật cản: ${dist.toStringAsFixed(1)} cm ${isDanger ? "- NGUY HIỂM" : ""}',
 													style: const TextStyle(
 														color: Colors.white,
 														fontWeight: FontWeight.bold,

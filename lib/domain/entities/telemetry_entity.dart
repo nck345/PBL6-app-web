@@ -21,7 +21,8 @@ class TelemetryEntity extends Equatable {
     required this.speakerVolume,
   });
 
-  bool get isObstacleNear => ultrasonicDistanceCm >= 0 && ultrasonicDistanceCm < 80.0;
+  bool get isSensorConnected => ultrasonicDistanceCm >= 0.0;
+  bool get isObstacleNear => isSensorConnected && ultrasonicDistanceCm < 80.0;
   bool get isBatteryLow => batteryPercentage < 20;
   bool get isOverheating => temperatureCelsius > 70.0;
 

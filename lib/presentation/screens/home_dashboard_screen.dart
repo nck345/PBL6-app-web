@@ -152,7 +152,8 @@ class HomeDashboardScreen extends StatelessWidget {
 											builder: (context, state) {
 												if (state is DashboardLoaded) {
 													final t = state.telemetry;
-													final isDistDanger = t.ultrasonicDistanceCm < 60;
+													final isSensorConn = t.isSensorConnected;
+													final isDistDanger = isSensorConn && t.ultrasonicDistanceCm < 60;
 													return LayoutBuilder(
 														builder: (context, constraints) {
 															final isWide = constraints.maxWidth >= 600;
@@ -166,11 +167,11 @@ class HomeDashboardScreen extends StatelessWidget {
 																children: [
 																	MetricTile(
 																		title: 'Vật cản gần nhất',
-																		value: t.ultrasonicDistanceCm.toStringAsFixed(1),
-																		unit: 'cm',
-																		icon: Icons.radar,
-																		color: isDistDanger ? Colors.red : Colors.blue,
-																		subtitle: isDistDanger ? 'CẢNH BÁO QUÁ GẦN' : 'Khoảng cách an toàn',
+																		value: isSensorConn ? t.ultrasonicDistanceCm.toStringAsFixed(1) : '--',
+																		unit: isSensorConn ? 'cm' : '',
+																		icon: isSensorConn ? Icons.radar : Icons.sensors_off,
+																		color: !isSensorConn ? Colors.grey : (isDistDanger ? Colors.red : Colors.blue),
+																		subtitle: !isSensorConn ? 'Chưa kết nối cảm biến' : (isDistDanger ? 'CẢNH BÁO QUÁ GẦN' : 'Khoảng cách an toàn'),
 																	),
 																	MetricTile(
 																		title: 'Nhiệt độ CPU',

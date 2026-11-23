@@ -123,13 +123,14 @@ void main() {
 			expect(find.text('Khoảng cách an toàn'), findsOneWidget);
 		});
 
-		testWidgets('W-DASH-08: Negative sensor reading displays negative value and triggers hazard styling', (tester) async {
+		testWidgets('W-DASH-08: Negative sensor reading displays disconnected sensor state', (tester) async {
 			final tel = createTestTelemetry(ultrasonicDistanceCm: -1.0);
 			dashBloc.emit(DashboardLoaded(telemetry: tel));
 			await tester.pumpWidget(createScreen());
 
-			expect(find.text('-1.0'), findsOneWidget);
-			expect(find.text('CẢNH BÁO QUÁ GẦN'), findsOneWidget);
+			expect(find.text('--'), findsOneWidget);
+			expect(find.text('Chưa kết nối cảm biến'), findsOneWidget);
+			expect(find.byIcon(Icons.sensors_off), findsOneWidget);
 		});
 
 		testWidgets('W-DASH-09: Thermal styling changes based on CPU temp > 70C', (tester) async {

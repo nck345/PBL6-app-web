@@ -95,12 +95,18 @@ uv run mock_pi_server.py
 /home/admin/Documents/pbl6/.venv/bin/python3 mock_pi_server.py
 ```
 
-Mã nguồn đã tích hợp cơ chế tự động dò tìm webcam USB qua chuẩn V4L2 (ưu tiên `/dev/video1`, `/dev/video0`) với định dạng MJPG 640x480 và bộ đệm 1 khung hình chống trễ. Nếu muốn ép buộc dùng chỉ số camera cụ thể hoặc radar giả lập:
+Mã nguồn đã tích hợp cơ chế tự động dò tìm webcam USB qua chuẩn V4L2 (ưu tiên `/dev/video1`, `/dev/video0`) với định dạng MJPG 640x480 và bộ đệm 1 khung hình chống trễ. Đồng thời tích hợp driver cảm biến khoảng cách HC-SR04 trên chân GPIO 23 (Trigger) và GPIO 24 (Echo).
+
+Khi chưa cắm cảm biến khoảng cách, hệ thống tự động gán giá trị `-1.0` và hiển thị trạng thái "Chưa kết nối cảm biến" trên màn hình Dashboard và Camera POV mà không phát sinh cảnh báo giả. Nếu muốn bật chế độ giả lập số liệu ngẫu nhiên để thử nghiệm khi không có phần cứng:
+
 ```bash
-# Chỉ định cổng camera USB cụ thể (ví dụ /dev/video1)
+# Bật giả lập số liệu khoảng cách khi chưa cắm cảm biến
+uv run mock_pi_server.py --mock-sensor
+
+# Chỉ định cổng camera USB cụ thể
 python3 mock_pi_server.py --camera-index 1
 
-# Ép buộc dùng radar HUD giả lập khi không cắm camera
+# Ép buộc dùng radar HUD đồ họa khi không cắm webcam
 python3 mock_pi_server.py --synthetic
 ```
 

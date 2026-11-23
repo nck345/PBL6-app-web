@@ -140,6 +140,16 @@ void main() {
 			expect(find.byIcon(Icons.radar), findsOneWidget);
 		});
 
+		testWidgets('W-LIVE-08b: Obstacle HUD displays disconnected text when sensor is not connected', (tester) async {
+			webrtcBloc.emit(WebRtcConnected(renderer: fakeWebrtc.fakeRenderer, isPttActive: false));
+			final tel = createTestTelemetry(ultrasonicDistanceCm: -1.0);
+			dashBloc.emit(DashboardLoaded(telemetry: tel));
+			await tester.pumpWidget(createScreen());
+
+			expect(find.text('Cảm biến khoảng cách: Chưa kết nối'), findsOneWidget);
+			expect(find.byIcon(Icons.sensors_off), findsOneWidget);
+		});
+
 		testWidgets('W-LIVE-09: Obstacle HUD is hidden when DashboardInitial', (tester) async {
 			webrtcBloc.emit(WebRtcConnected(renderer: fakeWebrtc.fakeRenderer, isPttActive: false));
 			await tester.pumpWidget(createScreen());

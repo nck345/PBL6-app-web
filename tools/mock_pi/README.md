@@ -69,6 +69,9 @@ python tools/mock_pi/mock_pi_server.py --device-id pi4_test_01 --broker broker.e
 | `--synthetic` | `False` | Ép buộc sử dụng radar HUD đồ họa thay vì mở webcam vật lý. |
 | `--headless` | `False` | Tắt vòng lặp đọc lệnh từ console terminal. |
 | `--interval` | `3.0` | Chu kỳ phát bản tin telemetry tính theo giây. |
+| `--mock-sensor` | `False` | Bật chế độ giả lập số liệu ngẫu nhiên khi chưa cắm phần cứng cảm biến. |
+| `--trig-pin` | `23` | Chân GPIO Trigger của cảm biến khoảng cách HC-SR04. |
+| `--echo-pin` | `24` | Chân GPIO Echo của cảm biến khoảng cách HC-SR04. |
 
 ---
 
@@ -80,6 +83,7 @@ Khi chạy không kèm cờ `--headless`, người dùng có thể nhập trực
 |---|---|
 | `a` hoặc `alert` | Kích hoạt ngay lập tức một bản tin cảnh báo nguy hiểm tới topic alert. |
 | `d <cm>` | Cố định khoảng cách siêu âm mô phỏng, ví dụ `d 25` để kích hoạt vùng nguy hiểm hoặc `d 160` để an toàn. |
+| `d auto` | Trả cảm biến về chế độ đọc tự động từ phần cứng GPIO HC-SR04. |
 | `b <pct>` | Cố định phần trăm pin mô phỏng, ví dụ `b 15`. |
 | `t <c>` | Cố định nhiệt độ CPU mô phỏng, ví dụ `t 62.5`. |
 | `reboot` | Giả lập quá trình khởi động lại thiết bị: chuyển offline 3 giây rồi online trở lại. |
