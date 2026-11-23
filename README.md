@@ -72,27 +72,27 @@ pip3 install paho-mqtt aiortc sounddevice numpy av RPi.GPIO
 ```
 
 #### 3. Chạy service kết nối trên Raspberry Pi
-Không cần sao chép toàn bộ mã nguồn Flutter. Bạn chỉ cần đưa thư mục `tools/mock_pi/` sang Raspberry Pi (bằng lệnh SCP hoặc tải trực tiếp):
+Không cần sao chép toàn bộ mã nguồn Flutter. Bạn chỉ cần đưa thư mục `tools/` vào thư mục làm việc `/home/admin/Documents/pbl6/tools` trên Raspberry Pi (bằng lệnh SCP hoặc tải trực tiếp):
 
 ```bash
 # Cách 1: Sao chép từ máy tính sang Pi qua SSH alias
-scp -r tools/mock_pi/* pbl6:~/pbl6_edge/
+scp -r tools/mock_pi/* pbl6:/home/admin/Documents/pbl6/tools/
 
 # Cách 2: Tải trực tiếp 2 file từ GitHub trên terminal của Pi
-mkdir -p ~/pbl6_edge && cd ~/pbl6_edge
+mkdir -p /home/admin/Documents/pbl6/tools && cd /home/admin/Documents/pbl6/tools
 curl -O https://raw.githubusercontent.com/nck345/PBL6-app-web/main/tools/mock_pi/requirements.txt
 curl -O https://raw.githubusercontent.com/nck345/PBL6-app-web/main/tools/mock_pi/mock_pi_server.py
 ```
 
-Trên Raspberry Pi, khởi chạy service bằng Python hoặc công cụ `uv`:
+Trên Raspberry Pi, chuyển vào thư mục `/home/admin/Documents/pbl6/tools` và khởi chạy service:
 ```bash
-cd ~/pbl6_edge
+cd /home/admin/Documents/pbl6/tools
 
-# Chạy trực tiếp qua môi trường ảo Python
-./venv/bin/python3 mock_pi_server.py
-
-# Hoặc chạy qua uv
+# Chạy qua uv
 uv run mock_pi_server.py
+
+# Hoặc chạy trực tiếp qua môi trường ảo Python
+/home/admin/Documents/pbl6/.venv/bin/python3 mock_pi_server.py
 ```
 
 Mã nguồn đã tích hợp cơ chế tự động dò tìm webcam USB qua chuẩn V4L2 (ưu tiên `/dev/video1`, `/dev/video0`) với định dạng MJPG 640x480 và bộ đệm 1 khung hình chống trễ. Nếu muốn ép buộc dùng chỉ số camera cụ thể hoặc radar giả lập:
@@ -108,11 +108,12 @@ python3 mock_pi_server.py --synthetic
 Khi kết nối remote SSH qua Cloudflare Tunnel hoặc mạng ngoài, bạn nên cho service chạy ngầm để không bị tắt khi đóng cửa sổ terminal:
 
 ```bash
-# Chạy ngầm bằng nohup
+# Chạy ngầm bằng nohup tại thư mục /home/admin/Documents/pbl6/tools
+cd /home/admin/Documents/pbl6/tools
 nohup uv run mock_pi_server.py > pbl6.log 2>&1 &
 
 # Hoặc chạy trong phiên làm việc tmux
-tmux new -s pbl6 "uv run mock_pi_server.py"
+tmux new -s pbl6 "cd /home/admin/Documents/pbl6/tools && uv run mock_pi_server.py"
 # Bấm Ctrl + B rồi bấm D để thoát ra ngoài mà tiến trình vẫn chạy
 ```
 
