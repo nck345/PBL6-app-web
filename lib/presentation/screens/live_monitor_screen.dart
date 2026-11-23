@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_constants.dart';
 import '../bloc/dashboard/dashboard_bloc.dart';
 import '../bloc/webrtc/webrtc_bloc.dart';
@@ -132,33 +133,82 @@ class _LiveMonitorScreenState extends State<LiveMonitorScreen> {
 									final isSensorConn = state.telemetry.isSensorConnected;
 									final dist = state.telemetry.ultrasonicDistanceCm;
 									final isDanger = isSensorConn && dist < 60;
-									return Container(
-										padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-										decoration: BoxDecoration(
-											color: !isSensorConn ? Colors.black54 : (isDanger ? Colors.red.withValues(alpha: 0.85) : Colors.black54),
-											borderRadius: BorderRadius.circular(20),
-										),
-										child: Row(
-											mainAxisSize: MainAxisSize.min,
-											children: [
-												Icon(
-													!isSensorConn ? Icons.sensors_off : (isDanger ? Icons.warning : Icons.radar),
-													color: Colors.white,
-													size: 18,
+									final t = state.telemetry;
+									final hasGps = t.isGpsAvailable;
+									return Wrap(
+										spacing: 8,
+										runSpacing: 8,
+										children: [
+											Container(
+												padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+												decoration: BoxDecoration(
+													color: !isSensorConn ? Colors.black54 : (isDanger ? Colors.red.withValues(alpha: 0.85) : Colors.black54),
+													borderRadius: BorderRadius.circular(20),
 												),
-												const SizedBox(width: 8),
-												Text(
-													!isSensorConn
-														? 'Cảm biến khoảng cách: Chưa kết nối'
-														: 'Vật cản: ${dist.toStringAsFixed(1)} cm ${isDanger ? "- NGUY HIỂM" : ""}',
-													style: const TextStyle(
-														color: Colors.white,
-														fontWeight: FontWeight.bold,
-														fontSize: 13,
+												child: Row(
+													mainAxisSize: MainAxisSize.min,
+													children: [
+														Icon(
+															!isSensorConn ? Icons.sensors_off : (isDanger ? Icons.warning : Icons.radar),
+															color: Colors.white,
+															size: 18,
+														),
+														const SizedBox(width: 8),
+														Text(
+															!isSensorConn
+																? 'Cảm biến khoảng cách: Chưa kết nối'
+																: 'Vật cản: ${dist.toStringAsFixed(1)} cm ${isDanger ? "- NGUY HIỂM" : ""}',
+															style: const TextStyle(
+																color: Colors.white,
+																fontWeight: FontWeight.bold,
+																fontSize: 13,
+															),
+														),
+													],
+												),
+											),
+											InkWell(
+												onTap: hasGps ? () async {
+													final uri = Uri.parse('https://www.google.com/maps/search/?api=1&query=${t.latitude},${t.longitude}');
+													if (await canLaunchUrl(uri)) {
+														await launchUrl(uri, mode: LaunchMode.externalApplication);
+													}
+												} : null,
+												borderRadius: BorderRadius.circular(20),
+												child: Container(
+													padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+													decoration: BoxDecoration(
+														color: Colors.black54,
+														borderRadius: BorderRadius.circular(20),
+													),
+													child: Row(
+														mainAxisSize: MainAxisSize.min,
+														children: [
+															Icon(
+																hasGps ? Icons.location_on : Icons.location_off,
+																color: hasGps ? Colors.redAccent : Colors.grey,
+																size: 18,
+															),
+															const SizedBox(width: 8),
+															Text(
+																hasGps
+																	? '${t.latitude!.toStringAsFixed(4)}°, ${t.longitude!.toStringAsFixed(4)}°'
+																	: 'GPS: Chưa có tín hiệu',
+																style: const TextStyle(
+																	color: Colors.white,
+																	fontWeight: FontWeight.bold,
+																	fontSize: 13,
+																),
+															),
+															if (hasGps) ...[
+																const SizedBox(width: 6),
+																const Icon(Icons.open_in_new, color: Colors.white70, size: 14),
+															],
+														],
 													),
 												),
-											],
-										),
+											),
+										],
 									);
 								}
 								return const SizedBox.shrink();

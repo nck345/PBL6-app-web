@@ -180,5 +180,19 @@ void main() {
 			expect(tester.takeException(), isNull);
 			expect(find.text('Nhấn giữ nút mic để nói qua loa Raspberry Pi'), findsOneWidget);
 		});
+
+		testWidgets('W-LIVE-12: Displays GPS overlay pill with coordinates when GPS fix is active', (tester) async {
+			webrtcBloc.emit(WebRtcConnected(renderer: fakeWebrtc.fakeRenderer, isPttActive: false));
+			final tel = createTestTelemetry(
+				latitude: 16.0738,
+				longitude: 108.1499,
+				hasGpsFix: true,
+			);
+			dashBloc.emit(DashboardLoaded(telemetry: tel));
+			await tester.pumpWidget(createScreen());
+
+			expect(find.textContaining('16.0738°, 108.1499°'), findsOneWidget);
+			expect(find.byIcon(Icons.location_on), findsOneWidget);
+		});
 	});
 }
